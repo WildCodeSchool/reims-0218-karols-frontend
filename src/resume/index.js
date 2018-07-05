@@ -72,5 +72,4 @@ export const getReservationData = state => {
 
 export const getCountTable = state => state.countPeopleTable.count
 
-export const getCountGender = state =>
-  state.genders.find(gender => gender.count)
+export const getCountGender = state => state.genders
