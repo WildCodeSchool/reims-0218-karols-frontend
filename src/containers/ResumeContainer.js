@@ -92,6 +92,11 @@ class ShowResume extends Component {
                 Vous avez choisi {reservationData.service.name}
               </p>
             )}
+            {reservationData.countGender && (
+              <p className="count">
+                Vous êtes {reservationData.countGender.count}
+              </p>
+            )}
           </div>
         )}
       </Jumbotron>
