@@ -10,14 +10,15 @@ import {
   makeTimeslotsReceived,
   makeChooseSlotReservation
 } from "../actions/actions"
-import { getSelectedShop } from "../resume"
+import { getSelectedShop, getReservationData } from "../resume"
 
 import ResultCalendar from "../components/ResultCalendar"
 const { DateTime } = require("luxon")
 
 const mapStateToProps = state => ({
   timeSlots: state.timeSlots,
-  selectedShop: getSelectedShop(state)
+  selectedShop: getSelectedShop(state),
+  reservationData: getReservationData(state)
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -38,9 +39,11 @@ class TimeSlots extends Component {
         const dateMinusOne = DateTime.fromISO(timeSlot.date)
           .plus({ days: -1 })
           .toISODate()
-        fetchDateSelected(dateMinusOne).then(response => {
-          this.props.onTimeSlotsReceived(response)
-        })
+        fetchDateSelected(dateMinusOne, this.props.reservationData).then(
+          response => {
+            this.props.onTimeSlotsReceived(response)
+          }
+        )
       }
       return false
     })
@@ -51,9 +54,11 @@ class TimeSlots extends Component {
         const datePlusOne = DateTime.fromISO(timeSlot.date)
           .plus({ days: +1 })
           .toISODate()
-        fetchDateSelected(datePlusOne).then(response => {
-          this.props.onTimeSlotsReceived(response)
-        })
+        fetchDateSelected(datePlusOne, this.props.reservationData).then(
+          response => {
+            this.props.onTimeSlotsReceived(response)
+          }
+        )
       }
       return false
     })
@@ -99,4 +104,7 @@ class TimeSlots extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TimeSlots)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TimeSlots)

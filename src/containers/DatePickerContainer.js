@@ -5,6 +5,7 @@ import InfiniteCalendar from "react-infinite-calendar"
 import "react-infinite-calendar/styles.css" // Make sure to import the default stylesheet
 import DatePickerTitle from "../components/DatePickerTitle"
 import { fetchDateSelected } from "../api/fetchDateSelected"
+import { getReservationData } from "../resume"
 import {
   Button,
   Modal,
@@ -15,7 +16,9 @@ import {
 } from "reactstrap"
 const { DateTime } = require("luxon")
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+  reservartionData: getReservationData(state)
+})
 
 const mapDispatchToProps = dispatch => ({
   onTimeSlotsReceived: response => dispatch(makeTimeslotsReceived(response))
@@ -47,10 +50,12 @@ class DatePickerSelect extends Component {
   validate() {
     // Fetch route date selected
     const dateFromJsDate = DateTime.fromJSDate(this.state.dateSelected).toISO()
-    fetchDateSelected(dateFromJsDate).then(response => {
-      this.props.onTimeSlotsReceived(response)
-      this.closeModal()
-    })
+    fetchDateSelected(dateFromJsDate, this.props.reservartionData).then(
+      response => {
+        this.props.onTimeSlotsReceived(response)
+        this.closeModal()
+      }
+    )
   }
 
   showModal() {
@@ -139,4 +144,7 @@ class DatePickerSelect extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DatePickerSelect)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DatePickerSelect)
