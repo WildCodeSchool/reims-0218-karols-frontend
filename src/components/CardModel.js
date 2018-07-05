@@ -74,8 +74,7 @@ const CardModel = ({
                 style={{
                   fontWeight: "500",
                   fontSize: "30px",
-                  marginBottom: "120px",
-
+                  marginBottom: "140px",
                   backgroundColor: "rgba(255, 255, 255, 0.2)",
                   borderRadius: "10px",
                   width: "auto",
@@ -104,14 +103,13 @@ const CardModel = ({
             </CardBody>
             <CardFooter
               style={{
-                backgroundColor: "rgba(136,136,136, 0.5)"
+                backgroundColor: "rgba(136,136,136, 0.5)",
+                maxHeight: "140px"
               }}
             >
               <p
                 className="text"
                 style={{
-                  height: "70px",
-                  margin: "0",
                   color: "#fff",
                   WebkitTransform: "translateY(calc(0px + 1em))",
                   transform: "translateY(calc(0px + 1em))"

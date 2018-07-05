@@ -9,7 +9,7 @@ export const isOn = (selected, showCounter, count) => {
     return false
   } else if (!selected && !showCounter) {
     return false
-  } else if (showCounter && count > 0) {
+  } else if (showCounter && count > 2) {
     return true
   }
 }
