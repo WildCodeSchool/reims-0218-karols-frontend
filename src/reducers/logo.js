@@ -1,9 +1,12 @@
 import { SHOPS_PRESTATIONS_RECEIVED } from "../actions/actions"
 
-const initialState = []
+const initialState = {}
 
-const Logo = () => (
-  <img src="https://image.noelshack.com/fichiers/2018/27/3/1530690032-logo-noirt.png" className="w-25 p-3" alt="logo" />
-)
+const logo = (prevState = initialState, action) => {
+  if (action.type === SHOPS_PRESTATIONS_RECEIVED) {
+    return action.response.logo
+  }
+  return prevState
+}
 
 export default logo
