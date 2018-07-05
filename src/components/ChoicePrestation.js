@@ -28,8 +28,10 @@ const PreparationChoice = ({
       {preparations.map(preparation => (
         <Col
           key={preparation.id}
-          md="4"
-          className="text-center mb-6"
+          lg="4"
+          md="6"
+          sm="12"
+          className="text-center mb-3"
           style={{
             height: "325px"
           }}
