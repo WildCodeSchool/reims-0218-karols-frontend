@@ -16,7 +16,8 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   selectedForm: getSelectedForm(state),
-  reservationData: getReservationData(state)
+  reservationData: getReservationData(state),
+  showAlert: state.reservation.success
 })
 
 class ContactForm extends Component {
@@ -190,7 +191,4 @@ ContactForm = reduxForm({
   form: "contact"
 })(ContactForm)
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ContactForm)
+export default connect(mapStateToProps, mapDispatchToProps)(ContactForm)
