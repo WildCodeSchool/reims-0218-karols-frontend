@@ -1,5 +1,5 @@
 import React from "react"
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap"
+import { Button, Modal, ModalBody, ModalFooter } from "reactstrap"
 import Iframe from "react-iframe"
 
 class Info extends React.Component {
@@ -50,11 +50,14 @@ class Info extends React.Component {
           toggle={this.toggle}
           className={this.props.className}
         >
-          <ModalHeader toggle={this.toggle}>Description</ModalHeader>
-          <ModalBody>
+          <ModalBody
+            style={{
+              width: "700px"
+            }}
+          >
             <Iframe
               url={this.props.info}
-              width="450px"
+              width="470px"
               height="450px"
               id="myId"
               className="myClassname"

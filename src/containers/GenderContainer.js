@@ -42,7 +42,10 @@ class GenderSelect extends Component {
         <GenderTitle />
         <Row className="justify-content-center">
           {this.props.genders.map(gender => (
-            <Col key={gender.sex} md="6" className="text-center mb-3">
+            <Col key={gender.sex}lg="4"
+            md="6"
+            sm="12"
+            className="text-center mb-3">
               <Zoom>
                 <CardModelGender
                   id={gender.sex}

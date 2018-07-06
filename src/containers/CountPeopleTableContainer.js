@@ -38,7 +38,7 @@ class Table extends Component {
       <div>
         <TableTitle />
         <Row className="justify-content-center">
-          <Col md="6">
+          <Col lg="4" md="6" sm="12" className="text-center mb-3">
             <Zoom>
               <CardModelTable
                 style={{

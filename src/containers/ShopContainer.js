@@ -32,7 +32,6 @@ class ShopSelect extends Component {
             >
               <CardModel
                 title={shop.city}
-                description={shop.address}
                 image={shop.image}
                 {...shop}
                 select={this.props.select}
