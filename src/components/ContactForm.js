@@ -6,14 +6,7 @@ import { Button, Alert } from "reactstrap"
 
 import { fetchCreateReservation } from "../api/fetchCreateReservation"
 import { makeSuccessReservation } from "../actions/actions"
-import {
-  getSelectedShop,
-  getSelectedService,
-  getSelectedGender,
-  getSelectedForm,
-  getSelectedPreparations,
-  getSelectedTimeSlot
-} from "../resume"
+import { getSelectedForm, getReservationData } from "../resume"
 
 const mapDispatchToProps = dispatch => ({
   success: () => {
@@ -22,13 +15,8 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
-  showAlert: state.reservation.success,
-  selectedShop: getSelectedShop(state),
-  selectedService: getSelectedService(state),
-  selectedGender: getSelectedGender(state),
   selectedForm: getSelectedForm(state),
-  selectedPreparations: getSelectedPreparations(state),
-  selectedTimeSlot: getSelectedTimeSlot(state)
+  reservationData: getReservationData(state)
 })
 
 class ContactForm extends Component {
@@ -174,12 +162,8 @@ class ContactForm extends Component {
           color="secondary"
           onClick={() => {
             return fetchCreateReservation({
-              selectedShop: this.props.selectedShop,
-              selectedService: this.props.selectedService,
-              selectedGender: this.props.selectedGender,
-              selectedForm: this.props.selectedForm,
-              selectedPreparations: this.props.selectedPreparations,
-              selectedTimeSlot: this.props.selectedTimeSlot
+              contact: this.props.selectedForm,
+              ...this.props.reservationData
             }).then(data => {
               this.props.success()
             })
@@ -206,4 +190,7 @@ ContactForm = reduxForm({
   form: "contact"
 })(ContactForm)
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContactForm)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ContactForm)
