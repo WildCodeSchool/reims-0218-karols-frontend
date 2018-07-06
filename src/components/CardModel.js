@@ -73,8 +73,8 @@ const CardModel = ({
                 className="title"
                 style={{
                   fontWeight: "500",
-                  fontSize: "30px",
-                  marginBottom: "140px",
+                  fontSize: "28px",
+                  marginBottom: "120px",
                   backgroundColor: "rgba(255, 255, 255, 0.2)",
                   borderRadius: "10px",
                   width: "auto",
@@ -104,7 +104,8 @@ const CardModel = ({
             <CardFooter
               style={{
                 backgroundColor: "rgba(136,136,136, 0.5)",
-                maxHeight: "140px"
+                maxHeight: "140px",
+                minHeight: "100px"
               }}
             >
               <p
