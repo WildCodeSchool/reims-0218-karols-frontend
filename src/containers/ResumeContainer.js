@@ -122,6 +122,12 @@ class ShowResume extends Component {
                 </div>
               ))
             )}
+            {reservationData.timeSlot && (
+              <p className="horaire">
+                Vous désirez être pris en charge le {""}
+                {transformTimeSlot(reservationData.timeSlot)}
+              </p>
+            )}
           </div>
         )}
       </Jumbotron>

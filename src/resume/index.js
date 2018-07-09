@@ -66,7 +66,8 @@ export const getReservationData = state => {
       shop: getSelectedShop(state),
       service: getSelectedService(state),
       countGender: getCountGender(state),
-      countPreparation: getCountPreparation(state)
+      countPreparation: getCountPreparation(state),
+      timeSlot: getSelectedTimeSlot(state)
     }
   }
 }
