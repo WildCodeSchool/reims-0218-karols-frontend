@@ -93,9 +93,7 @@ class ShowResume extends Component {
               </p>
             )}
             {reservationData.countGender && (
-              <p className="count">
-                Vous êtes {reservationData.countGender.count}
-              </p>
+              <p className="count">Vous êtes {reservationData.countGender}</p>
             )}
           </div>
         )}
