@@ -1,2 +1,4 @@
 export const fetchShopsPrestations = () =>
-  fetch("http://localhost:8000/shops-prestations").then(res => res.json())
+  fetch("http://api.wilder-artemis.fr/shops-prestations").then(res =>
+    res.json()
+  )
