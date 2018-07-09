@@ -2428,7 +2428,7 @@ describe("getReservationData", () => {
       service: getSelectedService(getServiceSelectedState),
       gender: getSelectedGender(getServiceSelectedState),
       preparations: getSelectedPreparations(getServiceSelectedState),
-      timeSlots: getSelectedTimeSlot(getServiceSelectedState)
+      timeSlot: getSelectedTimeSlot(getServiceSelectedState)
     }
 
     expect(getReservationData(getServiceSelectedState)).toEqual(expected)
@@ -2684,8 +2684,8 @@ describe("getReservationData", () => {
     const expected = {
       shop: getSelectedShop(tableSelectedState),
       service: getSelectedService(tableSelectedState),
-      countTable : getCountTable(tableSelectedState),
-      timeSlots: getSelectedTimeSlot(tableSelectedState)
+      countTable: getCountTable(tableSelectedState),
+      timeSlot: getSelectedTimeSlot(tableSelectedState)
     }
     expect(getReservationData(tableSelectedState)).toEqual(expected)
   })
