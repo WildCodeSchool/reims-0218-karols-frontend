@@ -59,10 +59,10 @@ class ShowResume extends Component {
                   </p>
                 )
               })}
-            {reservationData.timeSlots && (
+            {reservationData.timeSlot && (
               <p className="horaire">
                 Vous désirez être pris en charge le {""}
-                {transformTimeSlot(reservationData.timeSlots)}
+                {transformTimeSlot(reservationData.timeSlot)}
               </p>
             )}
           </div>
@@ -77,10 +77,10 @@ class ShowResume extends Component {
             {reservationData.countTable && (
               <p className="count">Vous êtes {reservationData.countTable}</p>
             )}
-            {reservationData.timeSlots && (
+            {reservationData.timeSlot && (
               <p className="horaire">
                 Vous désirez être pris en charge le {""}
-                {transformTimeSlot(reservationData.timeSlots)}
+                {transformTimeSlot(reservationData.timeSlot)}
               </p>
             )}
           </div>

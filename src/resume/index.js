@@ -50,7 +50,7 @@ export const getReservationData = state => {
       service: getSelectedService(state),
       gender: getSelectedGender(state),
       preparations: getSelectedPreparations(state),
-      timeSlots: getSelectedTimeSlot(state)
+      timeSlot: getSelectedTimeSlot(state)
     }
   }
   if (selectedService.id === 2) {
@@ -58,7 +58,7 @@ export const getReservationData = state => {
       shop: getSelectedShop(state),
       service: getSelectedService(state),
       countTable: getCountTable(state),
-      timeSlots: getSelectedTimeSlot(state)
+      timeSlot: getSelectedTimeSlot(state)
     }
   }
   if (selectedService.id === 3) {
