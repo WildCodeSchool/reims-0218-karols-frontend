@@ -8,11 +8,7 @@ const mapStateToProps = state => ({
 
 class KarolLogo extends Component {
   render() {
-    return (
-      <div>
-        <Logo />
-      </div>
-    )
+    return <Logo />
   }
 }
 

@@ -23,7 +23,6 @@ import DatePickerContainer from "./DatePickerContainer"
 import CalendarContainer from "./CalendarContainer"
 import ResumeContainer from "./ResumeContainer"
 import CountPeopleTableContainer from "./CountPeopleTableContainer"
-import LogoContainer from "./LogoContainer"
 
 import { makeShopsPrestationsReceived } from "../actions/actions"
 
@@ -58,7 +57,6 @@ class Page extends Component {
   render() {
     return (
       <Container>
-        <LogoContainer />
         <ShopContainer />
         <Element name="services">
           {this.props.showServices && <ServiceContainer />}
