@@ -130,29 +130,3 @@ class ShowResume extends Component {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps, null)(ShowResume)
-
-/* {this.props.selectedShop && (
-          <p className="shop">
-            Votre réservation se fera à {this.props.selectedShop.city}
-          </p>
-        )}
-        <hr className="my-2" />
-        {this.props.selectedService && (
-          <p className="préparation">
-            Vous avez choisi {this.props.selectedService.name}
-          </p>
-        )}
-        {this.props.selectedPreparations &&
-          this.props.selectedPreparations.map((preparation, index) => {
-            return (
-              <p className="prestation" key={index}>
-                {preparation.preparations[0].titlePreparation}
-              </p>
-            )
-          })}
-        {this.props.selectedTimeSlot && (
-          <p className="horaire">
-            Vous désirez être pris en charge le {""}
-            {transformTimeSlot(this.props.selectedTimeSlot)}
-          </p>
-        )} */
