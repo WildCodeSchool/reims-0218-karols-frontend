@@ -65,7 +65,8 @@ export const getReservationData = state => {
     return {
       shop: getSelectedShop(state),
       service: getSelectedService(state),
-      countGender: getCountGender(state)
+      countGender: getCountGender(state),
+      countPreparation: getCountPreparation(state)
     }
   }
 }
@@ -73,3 +74,5 @@ export const getReservationData = state => {
 export const getCountTable = state => state.countPeopleTable.count
 
 export const getCountGender = state => state.genders
+
+export const getCountPreparation = state => state.prestations
