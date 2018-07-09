@@ -93,7 +93,22 @@ class ShowResume extends Component {
               </p>
             )}
             {reservationData.countGender && (
-              <p className="count">Vous êtes {reservationData.countGender}</p>
+              <div className="count">
+                {reservationData.countGender.map((gender, index) => (
+                  <div key={index}>
+                    {gender.sex === "M" && (
+                      <p>
+                        Vous êtes {gender.count} homme{gender.count > 1 && "s"}
+                      </p>
+                    )}
+                    {gender.sex === "F" && (
+                      <p>
+                        Vous êtes {gender.count} femme{gender.count > 1 && "s"}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
             )}
           </div>
         )}
