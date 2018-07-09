@@ -110,6 +110,18 @@ class ShowResume extends Component {
                 ))}
               </div>
             )}
+            {reservationData.countPreparation.map(preparation =>
+              preparation.preparations.map((preparation, index) => (
+                <div key={index}>
+                  {preparation.count > 0 && (
+                    <p>
+                      Vous avez choisi {preparation.count}{" "}
+                      {preparation.titlePreparation}
+                    </p>
+                  )}
+                </div>
+              ))
+            )}
           </div>
         )}
       </Jumbotron>
