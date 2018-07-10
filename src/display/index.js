@@ -15,12 +15,22 @@ export const showSex = state =>
     .length > 0
 
 export const showFemalePrestation = state =>
-  state.genders.filter(gender => gender.selected && gender.sex === "F").length >
-    0 && showSex(state)
+  (state.genders.filter(gender => gender.selected && gender.sex === "F")
+    .length > 0 &&
+    showSex(state)) ||
+  (state.genders.filter(gender => gender.count >= 1 && gender.sex === "F")
+    .length > 0 &&
+    state.services.filter(service => service.selected && service.id === 3)
+      .length > 0)
 
 export const showMalePrestation = state =>
-  state.genders.filter(gender => gender.selected && gender.sex === "M").length >
-    0 && showSex(state)
+  (state.genders.filter(gender => gender.selected && gender.sex === "M")
+    .length > 0 &&
+    showSex(state)) ||
+  (state.genders.filter(gender => gender.count >= 1 && gender.sex === "M")
+    .length > 0 &&
+    state.services.filter(service => service.selected && service.id === 3)
+      .length > 0)
 
 export const showDatePicker = state =>
   (state.prestations.filter(
