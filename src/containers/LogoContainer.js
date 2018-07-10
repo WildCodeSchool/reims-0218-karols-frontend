@@ -8,8 +8,8 @@ const mapStateToProps = state => ({
 
 class KarolLogo extends Component {
   render() {
-    return <Logo />
+    return <Logo logo={this.props.logo.image} />
   }
 }
 
-export default connect(mapStateToProps)(KarolLogo)
+export default connect(mapStateToProps, null)(KarolLogo)
