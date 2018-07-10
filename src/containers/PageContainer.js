@@ -23,12 +23,12 @@ import DatePickerContainer from "./DatePickerContainer"
 import CalendarContainer from "./CalendarContainer"
 import ResumeContainer from "./ResumeContainer"
 import CountPeopleTableContainer from "./CountPeopleTableContainer"
+import ContactFormContainer from "./ContactFormContainer"
 import LogoContainer from "./LogoContainer"
 
 import { makeShopsPrestationsReceived } from "../actions/actions"
 
 import { fetchShopsPrestations } from "../api"
-import ContactForm from "../components/ContactForm"
 
 const mapStateToProps = state => ({
   showServices: showServices(state),
@@ -78,7 +78,9 @@ class Page extends Component {
         {this.props.showDatePicker && <DatePickerContainer />}
         {this.props.showCalendar && <CalendarContainer />}
         <ResumeContainer />
-        <Element name="form">{this.props.showForm && <ContactForm />}</Element>
+        <Element name="form">
+          {this.props.showForm && <ContactFormContainer />}
+        </Element>
       </Container>
     )
   }

@@ -37,13 +37,13 @@ class ShowResume extends Component {
         }}
       >
         <h1 className="display-12">Récapitulatif</h1>
+        <hr className="my-2" />
 
         {reservationData.shop && (
           <p className="shop">
             Votre réservation se fera à {reservationData.shop.city}
           </p>
         )}
-        <hr className="my-2" />
         {(reservationData.service && reservationData.service.id) === 1 && (
           <div>
             {reservationData.service && (
