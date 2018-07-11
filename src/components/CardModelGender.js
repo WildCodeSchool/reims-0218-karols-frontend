@@ -2,6 +2,8 @@ import React from "react"
 import { Card, CardTitle, CardBody, CardFooter } from "reactstrap"
 import Counter from "./Counter"
 
+import { isOn } from "./CardModel"
+
 const CardModelGender = ({
   id,
   title,
@@ -21,7 +23,7 @@ const CardModelGender = ({
           cursor: "pointer"
         }}
         onClick={() => {
-          select(id)
+          !showCounter && select(id)
         }}
       >
         <div
@@ -31,7 +33,7 @@ const CardModelGender = ({
             overflow: "hidden",
             boxShadow:
               "0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.2)",
-            background: selected
+            background: isOn(selected, showCounter, count)
               ? `linear-gradient(
   rgba(255, 255, 255, 0.1), 
  rgba(255, 255, 255, 0.1)
