@@ -41,7 +41,7 @@ class ContactForm extends Component {
   }
 
   render() {
-    const { handleSubmit, submitting } = this.props
+    const { handleSubmit } = this.props
     console.log(this.props.selectedForm)
     return (
       <form
@@ -169,7 +169,7 @@ class ContactForm extends Component {
           }}
         />
         <Button
-          disabled={!this.state.validCaptcha && submitting}
+          disabled={!this.state.validCaptcha}
           outline
           color="secondary"
           onClick={() => {
