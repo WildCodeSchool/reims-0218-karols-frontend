@@ -36,7 +36,7 @@ const CardModel = ({
           cursor: "pointer"
         }}
         onClick={() => {
-          select(id)
+          !showCounter && select(id)
         }}
       >
         <div
