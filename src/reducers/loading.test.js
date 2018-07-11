@@ -9,9 +9,7 @@ import loading from "./loading"
 
 describe("loading", () => {
   it("should be true when it's loading shop prestation received", () => {
-    const prevState = {
-      loading: true
-    }
+    const prevState = true
 
     const anyAction = {
       type: "ANY_ACTION"
@@ -21,9 +19,8 @@ describe("loading", () => {
   })
 
   it("should be true when shop prestation is received", () => {
-    const prevState = {
-      loading: true
-    }
+    const prevState = true
+
     const expectedState = false
 
     const action = makeShopsPrestationsReceived(false)
@@ -45,9 +42,8 @@ describe("loading", () => {
   })
 
   it("should be true when time slot is received", () => {
-    const prevState = {
-      loading: true
-    }
+    const prevState = true
+
     const expectedState = false
 
     const action = makeTimeslotsReceived(false)
@@ -69,9 +65,8 @@ describe("loading", () => {
   })
 
   it("should be true when success reservation is received", () => {
-    const prevState = {
-      loading: true
-    }
+    const prevState = true
+
     const expectedState = false
 
     const action = makeSuccessReservation(false)
@@ -81,9 +76,7 @@ describe("loading", () => {
 
 describe("loading", () => {
   it("should be true when no fetch is done", () => {
-    const prevState = {
-      loading: true
-    }
+    const prevState = true
 
     const anyAction = {
       type: "ANY_ACTION"
@@ -93,9 +86,8 @@ describe("loading", () => {
   })
 
   it("should should be true when no fetch is done ", () => {
-    const prevState = {
-      loading: true
-    }
+    const prevState = true
+
     const expectedState = true
 
     const action = requestLoading(true)

@@ -165,7 +165,7 @@ describe("action to decrement prestation", () => {
   })
 })
 
-describe.only("action request loading", () => {
+describe("action request loading", () => {
   it("should return a boolean false in loading property", () => {
     const expected = {
       type: REQUEST_LOADING,
