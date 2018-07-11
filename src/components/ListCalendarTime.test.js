@@ -2,6 +2,7 @@ import React from "react"
 import ReactDOM from "react-dom"
 import ListCalendarTime from "./ListCalendarTime"
 import renderer from "react-test-renderer"
+const { DateTime, Interval } = require("luxon")
 
 it("renders without crashing", () => {
   const div = document.createElement("div")
@@ -594,4 +595,53 @@ it("renders correctly", () => {
     .create(<ListCalendarTime timeSlots={timeSlots} />)
     .toJSON()
   expect(tree).toMatchSnapshot()
+})
+
+let start = 0
+let end = 0
+let interval = 0
+
+const createInterval = (startDate, endDate) => {
+  let start = DateTime.fromISO(startDate)
+  let end = DateTime.fromISO(endDate)
+  let interval = Interval.fromDateTimes(start, end)
+  return interval
+}
+
+const morningInterval = createInterval(
+  "2018-07-25T09:00:00.000+02:00",
+  "2018-07-25T12:00:00.000+02:00"
+)
+
+const afternoonInterval = createInterval(
+  "2018-07-25T12:00:00.000+02:00",
+  "2018-07-25T18:00:00.000+02:00"
+)
+
+const eveningInterval = createInterval(
+  "2018-07-25T18:00:00.000+02:00",
+  "2018-07-25T22:00:00.000+02:00"
+)
+
+const transformTimeToLuxonInterval = timeSlots =>
+  timeSlots.map(timeSlot => {
+    start = DateTime.fromISO(timeSlot.time.s)
+    end = DateTime.fromISO(timeSlot.time.e)
+    interval = Interval.fromDateTimes(start, end)
+    return morningInterval.engulfs(interval)
+  })
+
+it.only("should transform timeslot.time to a luxon interval", () => {
+  const timeSlot = [
+    {
+      available: true,
+      time: {
+        s: "2018-07-25T09:00:00.000+02:00",
+        e: "2018-07-25T09:15:00.000+02:00",
+        invalid: null
+      }
+    }
+  ]
+
+  expect(transformTimeToLuxonInterval(timeSlot)).toEqual([true])
 })
