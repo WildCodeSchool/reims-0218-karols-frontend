@@ -13,6 +13,7 @@ export const INCREMENT_PRESTATION = "INCREMENT_PRESTATION"
 export const DECREMENT_PRESTATION = "DECREMENT_PRESTATION"
 export const INCREMENT_TABLE = "INCREMENT_TABLE"
 export const DECREMENT_TABLE = "DECREMENT_TABLE"
+export const REQUEST_LOADING = "REQUEST_LOADING"
 
 export const makeChoosePrestation = (prestationId, preparationId) => ({
   type: CHOOSE_PRESTATION,
@@ -87,4 +88,9 @@ export const makeIncrementTable = () => ({
 
 export const makeDecrementTable = () => ({
   type: DECREMENT_TABLE
+})
+
+export const requestLoading = loading => ({
+  type: REQUEST_LOADING,
+  loading
 })

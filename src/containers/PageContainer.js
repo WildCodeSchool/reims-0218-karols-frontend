@@ -89,6 +89,8 @@ class Page extends Component {
     fetchShopsPrestations().then(response => {
       this.props.onShopsPrestationsReceived(response)
     })
+
+    
   }
 }
 
