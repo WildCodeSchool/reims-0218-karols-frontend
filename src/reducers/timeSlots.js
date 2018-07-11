@@ -15,7 +15,10 @@ const timeSlot = (prevState = initialState, action) => {
     }))
   }
   if (action.type === TIMESLOTS_RECEIVED) {
-    return action.response
+    return action.response.map(day => ({
+      ...day,
+      timeSlots: day.timeSlots.filter(timeSlot => timeSlot.available)
+    }))
   }
   return prevState
 }
