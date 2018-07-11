@@ -23,6 +23,7 @@ import DatePickerContainer from "./DatePickerContainer"
 import CalendarContainer from "./CalendarContainer"
 import ResumeContainer from "./ResumeContainer"
 import CountPeopleTableContainer from "./CountPeopleTableContainer"
+import LoadingContainer from "./LoadingContainer"
 
 import { makeShopsPrestationsReceived } from "../actions/actions"
 
@@ -57,6 +58,7 @@ class Page extends Component {
   render() {
     return (
       <Container>
+        <LoadingContainer />
         <ShopContainer />
         <Element name="services">
           {this.props.showServices && <ServiceContainer />}
@@ -74,6 +76,7 @@ class Page extends Component {
           {this.props.showMalePrestation && <PrestationMaleContainer />}
         </Element>
         {this.props.showDatePicker && <DatePickerContainer />}
+        <LoadingContainer />
         {this.props.showCalendar && <CalendarContainer />}
         <ResumeContainer />
         <Element name="form">{this.props.showForm && <ContactForm />}</Element>
@@ -85,8 +88,6 @@ class Page extends Component {
     fetchShopsPrestations().then(response => {
       this.props.onShopsPrestationsReceived(response)
     })
-
-    
   }
 }
 
