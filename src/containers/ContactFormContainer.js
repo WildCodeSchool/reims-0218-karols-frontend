@@ -8,6 +8,11 @@ import { fetchCreateReservation } from "../api/fetchCreateReservation"
 import { makeSuccessReservation } from "../actions/actions"
 import { getSelectedForm, getReservationData } from "../resume"
 
+const email = value =>
+  value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
+    ? "Invalid email address"
+    : undefined
+
 const mapDispatchToProps = dispatch => ({
   success: () => {
     dispatch(makeSuccessReservation())
@@ -36,7 +41,8 @@ class ContactForm extends Component {
   }
 
   render() {
-    const { handleSubmit } = this.props
+    const { handleSubmit, submitting } = this.props
+    console.log(this.props.selectedForm)
     return (
       <form
         onSubmit={handleSubmit}
@@ -139,6 +145,7 @@ class ContactForm extends Component {
             name="email"
             component="input"
             type="email"
+            validate={email}
             style={{
               backgroundColor: "#FFFFFF",
               color: "#181616",
@@ -162,7 +169,7 @@ class ContactForm extends Component {
           }}
         />
         <Button
-          disabled={!this.state.validCaptcha}
+          disabled={!this.state.validCaptcha && submitting}
           outline
           color="secondary"
           onClick={() => {
