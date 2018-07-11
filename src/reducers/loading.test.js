@@ -1,9 +1,14 @@
-import { requestLoading, makeTimeslotsReceived } from "../actions/actions"
+import {
+  requestLoading,
+  makeTimeslotsReceived,
+  makeSuccessReservation,
+  makeShopsPrestationsReceived
+} from "../actions/actions"
 
 import loading from "./loading"
 
-describe("request", () => {
-  it("loading but the response isn't here", () => {
+describe("loading", () => {
+  it("should be true when it's loading shop prestation received", () => {
     const prevState = {
       loading: true
     }
@@ -15,20 +20,19 @@ describe("request", () => {
     expect(loading(prevState, anyAction)).toEqual(prevState)
   })
 
-  it("loading but the response isn't here", () => {
+  it("should be true when shop prestation is received", () => {
     const prevState = {
       loading: true
     }
-    const expectedState = {
-      loading: true
-    }
-    const action = requestLoading(true)
+    const expectedState = false
+
+    const action = makeShopsPrestationsReceived(false)
     expect(loading(prevState, action)).toEqual(expectedState)
   })
 })
 
-describe("received", () => {
-  it("loading but the response isn't here", () => {
+describe("loading", () => {
+  it("should be true when it's loading time slot received", () => {
     const prevState = {
       loading: true
     }
@@ -40,14 +44,61 @@ describe("received", () => {
     expect(loading(prevState, anyAction)).toEqual(prevState)
   })
 
-  it("loading is enabled but the response is here", () => {
+  it("should be true when time slot is received", () => {
     const prevState = {
       loading: true
     }
-    const expectedState = {
-      loading: false
-    }
+    const expectedState = false
+
     const action = makeTimeslotsReceived(false)
+    expect(loading(prevState, action)).toEqual(expectedState)
+  })
+})
+
+describe("loading", () => {
+  it("should be true when it's loading success reservation received", () => {
+    const prevState = {
+      loading: true
+    }
+
+    const anyAction = {
+      type: "ANY_ACTION"
+    }
+
+    expect(loading(prevState, anyAction)).toEqual(prevState)
+  })
+
+  it("should be true when success reservation is received", () => {
+    const prevState = {
+      loading: true
+    }
+    const expectedState = false
+
+    const action = makeSuccessReservation(false)
+    expect(loading(prevState, action)).toEqual(expectedState)
+  })
+})
+
+describe("loading", () => {
+  it("should be true when no fetch is done", () => {
+    const prevState = {
+      loading: true
+    }
+
+    const anyAction = {
+      type: "ANY_ACTION"
+    }
+
+    expect(loading(prevState, anyAction)).toEqual(prevState)
+  })
+
+  it("should should be true when no fetch is done ", () => {
+    const prevState = {
+      loading: true
+    }
+    const expectedState = true
+
+    const action = requestLoading(true)
     expect(loading(prevState, action)).toEqual(expectedState)
   })
 })
