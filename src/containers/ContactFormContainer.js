@@ -53,13 +53,13 @@ class ContactForm extends Component {
       >
         <h2
           style={{
-            background: "#4D4D4D",
-            textTransform: "uppercase",
-            color: "#797979",
-            fontSize: "18px",
+            background: "#f2f2f2",
+            color: "#26292D",
+            fontSize: "30px",
             fontWeight: "100",
             padding: "20px",
             borderRadius: "10px",
+            border: "1px solid #797979",
             margin: "30px"
           }}
         >
@@ -86,9 +86,10 @@ class ContactForm extends Component {
             component="input"
             type="text"
             style={{
-              backgroundColor: "#797979",
-              color: "#FFF",
-              marginLeft: "20px"
+              backgroundColor: "#FFFFFF",
+              color: "#181616",
+              marginLeft: "20px",
+              borderRadius: "10px"
             }}
           />
         </div>
@@ -112,9 +113,10 @@ class ContactForm extends Component {
             component="input"
             type="text"
             style={{
-              backgroundColor: "#797979",
-              color: "#FFF",
-              marginLeft: "20px"
+              backgroundColor: "#FFFFFF",
+              color: "#181616",
+              marginLeft: "20px",
+              borderRadius: "10px"
             }}
           />
         </div>
@@ -138,9 +140,10 @@ class ContactForm extends Component {
             component="input"
             type="email"
             style={{
-              backgroundColor: "#797979",
-              color: "#FFF",
-              marginLeft: "20px"
+              backgroundColor: "#FFFFFF",
+              color: "#181616",
+              marginLeft: "20px",
+              borderRadius: "10px"
             }}
           />
         </div>
@@ -154,7 +157,8 @@ class ContactForm extends Component {
           style={{
             display: "table",
             margin: "0 auto",
-            paddingBottom: "30px"
+            paddingBottom: "30px",
+            marginTop: "30px"
           }}
         />
         <Button

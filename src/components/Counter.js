@@ -25,6 +25,7 @@ const Counter = ({
           top: "20px"
         }}
         className="mr-4 mb-1"
+        disabled={count < 1 && true}
       >
         -
       </Button>
