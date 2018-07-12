@@ -1,5 +1,5 @@
 export const fetchCreateReservation = data =>
-  fetch("http://localhost:8000/reservations", {
+  fetch("http://api.karolsresa.fr/reservations", {
     method: "POST",
     headers: {
       Accept: "application/json",
