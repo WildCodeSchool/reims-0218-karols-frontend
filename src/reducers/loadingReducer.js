@@ -7,7 +7,7 @@ import {
 
 const initialState = true
 
-const loading = (prevState = initialState, action) => {
+const loadingReducer = (prevState = initialState, action) => {
   if (action.type === REQUEST_LOADING) {
     return action.loading
   }
@@ -21,4 +21,4 @@ const loading = (prevState = initialState, action) => {
   return prevState
 }
 
-export default loading
+export default loadingReducer

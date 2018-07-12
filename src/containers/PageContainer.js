@@ -25,6 +25,7 @@ import ResumeContainer from "./ResumeContainer"
 import CountPeopleTableContainer from "./CountPeopleTableContainer"
 import ContactFormContainer from "./ContactFormContainer"
 import LogoContainer from "./LogoContainer"
+import LoadingContainer from "./LoadingContainer"
 
 import { makeShopsPrestationsReceived } from "../actions/actions"
 
@@ -58,6 +59,7 @@ class Page extends Component {
   render() {
     return (
       <Container>
+        <LoadingContainer />
         <LogoContainer />
         <ShopContainer />
         <Element name="services">
@@ -89,8 +91,6 @@ class Page extends Component {
     fetchShopsPrestations().then(response => {
       this.props.onShopsPrestationsReceived(response)
     })
-
-    
   }
 }
 
