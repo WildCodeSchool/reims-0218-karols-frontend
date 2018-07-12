@@ -32,7 +32,7 @@ import CardHover from "../components/CardHover"
 import CardModel from "../components/CardModel"
 import Resume from "../components/Resume"
 import Counter from "../components/Counter"
-import CardSelectCounter from "../components/CardSelectCounter"
+import Loading from "../components/Loading"
 
 storiesOf("Welcome", module).add("to Storybook", () => (
   <Welcome showApp={linkTo("Button")} />
@@ -52,8 +52,10 @@ storiesOf("Button", module)
 
 storiesOf("Page", module).add("Page with all the content", () => <Page />)
 
-storiesOf("CardSelectCounter", module).add("List choice Shop render", () => (
-  <CardSelectCounter />
+
+
+storiesOf("Loading", module).add("Logo loading", () => (
+  <Loading />
 ))
 
 storiesOf("ValidationReservationButton", module).add(
@@ -61,27 +63,6 @@ storiesOf("ValidationReservationButton", module).add(
   () => <ValidationReservationButton />
 )
 
-storiesOf("CardSelectCounter", module).add(
-  "Render CardSelectCounter",
-  () => (
-    <Container>
-      <div>
-        <Row className="justify-content-center">
-          <Col
-            key={prestation02.id}
-            md="4"
-            className="text-center mb-6"
-            style={{
-              height: "325px"
-            }}
-          >
-            <CardSelectCounter {...preparation02}showCounter={true} />
-          </Col>
-        </Row>
-      </div>
-    </Container>
-  )
-)
 
 const prestation02 = {
   id: 2,

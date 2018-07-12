@@ -5,7 +5,7 @@ exports[`renders correctly 1`] = `
   <img
     alt="logo"
     className="w-25 p-3"
-    src="https://image.noelshack.com/fichiers/2018/27/3/1530690032-logo-noirt.png"
+    src={undefined}
   />
 </header>
 `;

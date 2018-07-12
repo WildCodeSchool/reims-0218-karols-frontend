@@ -22,7 +22,9 @@ import {
   INCREMENT_TABLE,
   makeIncrementTable,
   DECREMENT_TABLE,
-  makeDecrementTable
+  makeDecrementTable,
+  REQUEST_LOADING,
+  requestLoading
 } from "./actions"
 // import des actions et actions creator pour faire des testes
 
@@ -160,5 +162,15 @@ describe("action to decrement prestation", () => {
       prestationId: 2
     }
     expect(makeDecrementPrestation(2, 4)).toEqual(expected)
+  })
+})
+
+describe("action request loading", () => {
+  it("should return a boolean false in loading property", () => {
+    const expected = {
+      type: REQUEST_LOADING,
+      loading: true
+    }
+    expect(requestLoading(true)).toEqual(expected)
   })
 })

@@ -50,7 +50,7 @@ export const getReservationData = state => {
       service: getSelectedService(state),
       gender: getSelectedGender(state),
       preparations: getSelectedPreparations(state),
-      timeSlots: getSelectedTimeSlot(state)
+      timeSlot: getSelectedTimeSlot(state)
     }
   }
   if (selectedService.id === 2) {
@@ -58,14 +58,16 @@ export const getReservationData = state => {
       shop: getSelectedShop(state),
       service: getSelectedService(state),
       countTable: getCountTable(state),
-      timeSlots: getSelectedTimeSlot(state)
+      timeSlot: getSelectedTimeSlot(state)
     }
   }
   if (selectedService.id === 3) {
     return {
       shop: getSelectedShop(state),
       service: getSelectedService(state),
-      countGender: getCountGender(state)
+      countGender: getCountGender(state),
+      countPreparation: getCountPreparation(state),
+      timeSlot: getSelectedTimeSlot(state)
     }
   }
 }
@@ -73,3 +75,5 @@ export const getReservationData = state => {
 export const getCountTable = state => state.countPeopleTable.count
 
 export const getCountGender = state => state.genders
+
+export const getCountPreparation = state => state.prestations
