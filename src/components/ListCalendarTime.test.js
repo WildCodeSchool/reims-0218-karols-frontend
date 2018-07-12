@@ -600,6 +600,9 @@ it("renders correctly", () => {
 let start = 0
 let end = 0
 let interval = 0
+let morningInterval = 0
+let afternoonInterval = 0
+let eveningInterval = 0
 
 const createInterval = (startDate, endDate) => {
   let start = DateTime.fromISO(startDate)
@@ -608,26 +611,14 @@ const createInterval = (startDate, endDate) => {
   return interval
 }
 
-const morningInterval = createInterval(
-  "2018-07-25T09:00:00.000+02:00",
-  "2018-07-25T12:00:00.000+02:00"
-)
-
-const afternoonInterval = createInterval(
-  "2018-07-25T12:00:00.000+02:00",
-  "2018-07-25T18:00:00.000+02:00"
-)
-
-const eveningInterval = createInterval(
-  "2018-07-25T18:00:00.000+02:00",
-  "2018-07-25T22:00:00.000+02:00"
-)
-
-const transformTimeToLuxonInterval = timeSlots =>
+const period = timeSlots =>
   timeSlots.map(timeSlot => {
     start = DateTime.fromISO(timeSlot.time.s)
     end = DateTime.fromISO(timeSlot.time.e)
     interval = Interval.fromDateTimes(start, end)
+    morningInterval = Interval.fromDateTimes(start, end)
+    // Set time
+
     return morningInterval.engulfs(interval)
   })
 
@@ -643,5 +634,5 @@ it.only("should transform timeslot.time to a luxon interval", () => {
     }
   ]
 
-  expect(transformTimeToLuxonInterval(timeSlot)).toEqual([true])
+  expect(period(timeSlot)).toEqual([true])
 })
