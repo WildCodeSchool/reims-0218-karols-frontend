@@ -35,12 +35,12 @@ const CardModelGender = ({
               "0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.2)",
             background: isOn(selected, showCounter, count)
               ? `linear-gradient(
-  rgba(255, 255, 255, 0.1), 
- rgba(255, 255, 255, 0.1)
+  rgba(255, 255, 255, 0), 
+ rgba(255, 255, 255, 0)
  ), url(${image}) center/100% no-repeat`
               : `linear-gradient(
- rgba(0, 0, 0, 0.5), 
- rgba(0, 0, 0, 0.5)
+ rgba(0, 0, 0, 0.4), 
+ rgba(0, 0, 0, 0.4)
  ), url(${image}) center/100% no-repeat`
           }}
         >
