@@ -10,14 +10,22 @@ import { getSelectedForm, getReservationData } from "../resume"
 
 const email = value =>
   value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
-    ? "veuillez rentrer une adresse mail valide"
+    ? "Veuillez rentrer une adresse mail valide"
+    : undefined
+
+const phoneNumber = value =>
+  value && !/^(0|[1-9][0-9]{9})$/i.test(value)
+    ? "Veuillez renter un numéro de téléphone à 10 chiffres"
     : undefined
 
 // renvoyer vrai si syncErrors.email n'est pas défini
 //
-const valideMail = formValues => {
-  console.log(getSelectedForm(formValues))
-}
+
+// const valideMail = formValues => {
+//   let result = {}
+//   const selectedForm = getSelectedForm(state)
+//   if (!selectedForm.email)
+// }
 
 const mapDispatchToProps = dispatch => ({
   success: () => {
@@ -124,6 +132,34 @@ class ContactForm extends Component {
             name="lastName"
             component="input"
             type="text"
+            style={{
+              backgroundColor: "#FFFFFF",
+              color: "#181616",
+              marginLeft: "20px",
+              borderRadius: "10px"
+            }}
+          />
+        </div>
+        <div
+          style={{
+            marginTop: "20px"
+          }}
+        >
+          <label
+            htmlFor="lastName"
+            style={{
+              display: "inline-block",
+              width: "140px",
+              textAlign: "center"
+            }}
+          >
+            Téléphone
+          </label>
+          <Field
+            name="phone"
+            component="input"
+            type="number"
+            validate={phoneNumber}
             style={{
               backgroundColor: "#FFFFFF",
               color: "#181616",
