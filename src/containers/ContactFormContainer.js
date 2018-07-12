@@ -6,7 +6,7 @@ import { Button, Alert } from "reactstrap"
 
 import { fetchCreateReservation } from "../api/fetchCreateReservation"
 import { makeSuccessReservation } from "../actions/actions"
-import { getSelectedForm, getReservationData } from "../resume"
+import { getSelectedForm, getReservationData, getFormErrors } from "../resume"
 
 const email = value =>
   value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
@@ -22,9 +22,7 @@ const phoneNumber = value =>
 //
 
 // const valideMail = formValues => {
-//   let result = {}
-//   const selectedForm = getSelectedForm(state)
-//   if (!selectedForm.email)
+
 // }
 
 const mapDispatchToProps = dispatch => ({
@@ -36,6 +34,7 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
   selectedForm: getSelectedForm(state),
   reservationData: getReservationData(state),
+  formErrors: getFormErrors(state),
   showAlert: state.reservation.success
 })
 
@@ -211,7 +210,7 @@ class ContactForm extends Component {
           }}
         />
         <Button
-          disabled={!this.state.validCaptcha}
+          disabled={!this.state.validCaptcha || this.props.formErrors}
           outline
           color="secondary"
           onClick={() => {
