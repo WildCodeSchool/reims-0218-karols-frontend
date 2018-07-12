@@ -18,12 +18,8 @@ const phoneNumber = value =>
     ? "Veuillez renter un numéro de téléphone à 10 chiffres"
     : undefined
 
-// renvoyer vrai si syncErrors.email n'est pas défini
-//
-
-// const valideMail = formValues => {
-
-// }
+const required = value =>
+  value || typeof value === "number" ? undefined : "Required"
 
 const mapDispatchToProps = dispatch => ({
   success: () => {
@@ -104,6 +100,7 @@ class ContactForm extends Component {
             name="firstName"
             component="input"
             type="text"
+            validate={required}
             style={{
               backgroundColor: "#FFFFFF",
               color: "#181616",
@@ -131,6 +128,7 @@ class ContactForm extends Component {
             name="lastName"
             component="input"
             type="text"
+            validate={required}
             style={{
               backgroundColor: "#FFFFFF",
               color: "#181616",
@@ -158,7 +156,7 @@ class ContactForm extends Component {
             name="phone"
             component="input"
             type="number"
-            validate={phoneNumber}
+            validate={[required, phoneNumber]}
             style={{
               backgroundColor: "#FFFFFF",
               color: "#181616",
@@ -186,7 +184,7 @@ class ContactForm extends Component {
             name="email"
             component="input"
             type="email"
-            validate={email}
+            validate={[required, email]}
             style={{
               backgroundColor: "#FFFFFF",
               color: "#181616",
