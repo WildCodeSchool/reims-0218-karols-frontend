@@ -76,7 +76,6 @@ class Page extends Component {
           {this.props.showMalePrestation && <PrestationMaleContainer />}
         </Element>
         {this.props.showDatePicker && <DatePickerContainer />}
-        <LoadingContainer />
         {this.props.showCalendar && <CalendarContainer />}
         <ResumeContainer />
         <Element name="form">{this.props.showForm && <ContactForm />}</Element>
