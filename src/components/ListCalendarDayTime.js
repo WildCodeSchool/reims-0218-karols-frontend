@@ -14,7 +14,7 @@ const ListCalendarDayTime = ({ day, selectTimeSlot }) => (
     }}
   >
     <CalendarDay date={day.date} />
-    <Scrollbars style={{ height: 200 }}>
+    <Scrollbars style={{ height: 380 }}>
       <ListCalendarTime
         timeSlots={day.timeSlots}
         selectTimeSlot={selectTimeSlot}

@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import { Container } from "reactstrap"
 
 import { fetchDateSelected } from "../api/fetchDateSelected"
-import { showFourFirstTimeSlots } from "../display/index"
+import { showHeightFirstTimeSlots } from "../display/index"
 
 import { Button } from "reactstrap"
 import {
@@ -73,7 +73,7 @@ class TimeSlots extends Component {
       <Container>
         <ResultCalendar
           handleMinusClick={this.handleMinusClick}
-          weekTimeSlots={showFourFirstTimeSlots(
+          weekTimeSlots={showHeightFirstTimeSlots(
             this.props.timeSlots,
             this.state.showMore
           )}
@@ -104,7 +104,4 @@ class TimeSlots extends Component {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TimeSlots)
+export default connect(mapStateToProps, mapDispatchToProps)(TimeSlots)
