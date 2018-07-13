@@ -95,7 +95,6 @@ class ContactForm extends Component {
 
   render() {
     const { handleSubmit } = this.props
-    console.log(this.props.selectedForm)
     return (
       <form
         onSubmit={handleSubmit}
