@@ -174,7 +174,7 @@ class ContactForm extends Component {
             })
           }}
         >
-          Creer cette réservation
+          Valider
         </Button>{" "}
         {this.props.showAlert && (
           <Alert

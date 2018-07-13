@@ -20,7 +20,7 @@ const mapStateToProps = state => ({
 const transformTimeSlot = timeSlot =>
   DateTime.fromISO(timeSlot.time.s)
     .setLocale("fr")
-    .toFormat("cccc dd LLLL HH 'h' mm")
+    .toFormat("'à' HH 'h' mm 'le' cccc dd LLLL ")
 
 class ShowResume extends Component {
   render() {
@@ -61,7 +61,7 @@ class ShowResume extends Component {
               })}
             {reservationData.timeSlot && (
               <p className="horaire">
-                Date de RDV au salon le {""}
+                Date de RDV au salon {""}
                 {transformTimeSlot(reservationData.timeSlot)}
               </p>
             )}
@@ -79,7 +79,7 @@ class ShowResume extends Component {
             )}
             {reservationData.timeSlot && (
               <p className="horaire">
-                Date de RDV au salon le {""}
+                Date de RDV au salon {""}
                 {transformTimeSlot(reservationData.timeSlot)}
               </p>
             )}
@@ -124,7 +124,7 @@ class ShowResume extends Component {
             )}
             {reservationData.timeSlot && (
               <p className="horaire">
-                Date de RDV au salon le {""}
+                Date de RDV au salon {""}
                 {transformTimeSlot(reservationData.timeSlot)}
               </p>
             )}
