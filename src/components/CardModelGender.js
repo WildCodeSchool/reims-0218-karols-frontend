@@ -68,7 +68,7 @@ const CardModelGender = ({
                     color: "#FFF"
                   }}
                 >
-                  {title}
+                  {description}
                 </p>
               </CardTitle>
             </CardBody>

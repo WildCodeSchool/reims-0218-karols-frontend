@@ -93,7 +93,7 @@ class TimeSlots extends Component {
           <div className="phone mt-3">
             {this.props.selectedShop && (
               <p className="shop">
-                Si vous ne trouvez aucun crénaux, n'hésitez pas à appeler au{" "}
+                Si vous ne trouvez aucun crénau, contactez le{" "}
                 {this.props.selectedShop.phone}
               </p>
             )}
@@ -104,7 +104,4 @@ class TimeSlots extends Component {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TimeSlots)
+export default connect(mapStateToProps, mapDispatchToProps)(TimeSlots)
