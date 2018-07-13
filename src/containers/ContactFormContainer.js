@@ -8,18 +8,75 @@ import { fetchCreateReservation } from "../api/fetchCreateReservation"
 import { makeSuccessReservation } from "../actions/actions"
 import { getSelectedForm, getReservationData, getFormErrors } from "../resume"
 
-const email = value =>
-  value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
-    ? "Veuillez rentrer une adresse mail valide"
-    : undefined
+const validate = values => {
+  const errors = {}
+  if (!values.firstName) {
+    errors.firstName = "Required"
+  }
+  if (!values.lastName) {
+    errors.lastName = "Required"
+  }
+  if (!values.email) {
+    errors.email = "Required"
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = "Veuillez rentrer une adresse mail valide"
+  }
+  if (!values.phone) {
+    errors.phone = "Required"
+  } else if (!/^(0|[1-9][0-9]{9})$/i.test(values.phone)) {
+    errors.phone = "Veuillez renter un numéro de téléphone à 10 chiffres"
+  }
+  return errors
+}
 
-const phoneNumber = value =>
-  value && !/^(0|[1-9][0-9]{9})$/i.test(value)
-    ? "Veuillez renter un numéro de téléphone à 10 chiffres"
-    : undefined
+const renderField = ({ label, input, meta: { touched, error } }) => (
+  <div>
+    <div>
+      <label
+        style={{
+          display: "inline-block",
+          width: "140px",
+          textAlign: "center"
+        }}
+      >
+        {label}
+      </label>
+      <input
+        style={{
+          backgroundColor: "#FFFFFF",
+          color: "#181616",
+          marginLeft: "20px",
+          borderRadius: "10px"
+        }}
+        {...input}
+      />
 
-const required = value =>
-  value || typeof value === "number" ? undefined : "Required"
+      {touched &&
+        error && (
+          <span
+            style={{
+              color: "red"
+            }}
+          >
+            {error}
+          </span>
+        )}
+    </div>
+  </div>
+)
+
+// const email = value =>
+//   value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
+//     ? "Veuillez rentrer une adresse mail valide"
+//     : undefined
+
+// const phoneNumber = value =>
+//   value && !/^(0|[1-9][0-9]{9})$/i.test(value)
+//     ? "Veuillez renter un numéro de téléphone à 10 chiffres"
+//     : undefined
+
+// const required = value =>
+//   value || typeof value === "number" ? undefined : "Required"
 
 const mapDispatchToProps = dispatch => ({
   success: () => {
@@ -86,21 +143,11 @@ class ContactForm extends Component {
             marginTop: "20px"
           }}
         >
-          <label
-            htmlFor="firstName"
-            style={{
-              display: "inline-block",
-              width: "140px",
-              textAlign: "center"
-            }}
-          >
-            Prénom
-          </label>
           <Field
             name="firstName"
-            component="input"
             type="text"
-            validate={required}
+            component={renderField}
+            label="Prénom"
             style={{
               backgroundColor: "#FFFFFF",
               color: "#181616",
@@ -114,21 +161,11 @@ class ContactForm extends Component {
             marginTop: "20px"
           }}
         >
-          <label
-            htmlFor="lastName"
-            style={{
-              display: "inline-block",
-              width: "140px",
-              textAlign: "center"
-            }}
-          >
-            Nom
-          </label>
           <Field
             name="lastName"
-            component="input"
             type="text"
-            validate={required}
+            component={renderField}
+            label="Nom"
             style={{
               backgroundColor: "#FFFFFF",
               color: "#181616",
@@ -142,21 +179,11 @@ class ContactForm extends Component {
             marginTop: "20px"
           }}
         >
-          <label
-            htmlFor="lastName"
-            style={{
-              display: "inline-block",
-              width: "140px",
-              textAlign: "center"
-            }}
-          >
-            Téléphone
-          </label>
           <Field
             name="phone"
-            component="input"
             type="number"
-            validate={[required, phoneNumber]}
+            component={renderField}
+            label="Téléphone"
             style={{
               backgroundColor: "#FFFFFF",
               color: "#181616",
@@ -170,21 +197,11 @@ class ContactForm extends Component {
             marginTop: "20px"
           }}
         >
-          <label
-            htmlFor="email"
-            style={{
-              display: "inline-block",
-              width: "140px",
-              textAlign: "center"
-            }}
-          >
-            Email
-          </label>
           <Field
             name="email"
-            component="input"
             type="email"
-            validate={[required, email]}
+            component={renderField}
+            label="Email"
             style={{
               backgroundColor: "#FFFFFF",
               color: "#181616",
@@ -238,7 +255,8 @@ class ContactForm extends Component {
 }
 
 ContactForm = reduxForm({
-  form: "contact"
+  form: "contact",
+  validate
 })(ContactForm)
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactForm)
