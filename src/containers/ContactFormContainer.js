@@ -11,18 +11,18 @@ import { getSelectedForm, getReservationData, getFormErrors } from "../resume"
 const validate = values => {
   const errors = {}
   if (!values.firstName) {
-    errors.firstName = "Required"
+    errors.firstName = "Champ requis"
   }
   if (!values.lastName) {
-    errors.lastName = "Required"
+    errors.lastName = "Champ requis"
   }
   if (!values.email) {
-    errors.email = "Required"
+    errors.email = "Champ requis"
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = "Veuillez rentrer une adresse mail valide"
   }
   if (!values.phone) {
-    errors.phone = "Required"
+    errors.phone = "Champ requis"
   } else if (!/^(0|[1-9][0-9]{9})$/i.test(values.phone)) {
     errors.phone = "Veuillez renter un numéro de téléphone à 10 chiffres"
   }
@@ -31,31 +31,31 @@ const validate = values => {
 
 const renderField = ({ label, input, meta: { touched, error } }) => (
   <div>
+    <label
+      style={{
+        display: "inline-block",
+        width: "140px",
+        textAlign: "center"
+      }}
+    >
+      {label}
+    </label>
+    <input
+      style={{
+        backgroundColor: "#FFFFFF",
+        color: "#181616",
+        marginLeft: "20px",
+        borderRadius: "10px"
+      }}
+      {...input}
+    />
     <div>
-      <label
-        style={{
-          display: "inline-block",
-          width: "140px",
-          textAlign: "center"
-        }}
-      >
-        {label}
-      </label>
-      <input
-        style={{
-          backgroundColor: "#FFFFFF",
-          color: "#181616",
-          marginLeft: "20px",
-          borderRadius: "10px"
-        }}
-        {...input}
-      />
-
       {touched &&
         error && (
           <span
             style={{
-              color: "red"
+              color: "red",
+              fontSize: "13px"
             }}
           >
             {error}
@@ -64,19 +64,6 @@ const renderField = ({ label, input, meta: { touched, error } }) => (
     </div>
   </div>
 )
-
-// const email = value =>
-//   value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
-//     ? "Veuillez rentrer une adresse mail valide"
-//     : undefined
-
-// const phoneNumber = value =>
-//   value && !/^(0|[1-9][0-9]{9})$/i.test(value)
-//     ? "Veuillez renter un numéro de téléphone à 10 chiffres"
-//     : undefined
-
-// const required = value =>
-//   value || typeof value === "number" ? undefined : "Required"
 
 const mapDispatchToProps = dispatch => ({
   success: () => {
@@ -180,10 +167,10 @@ class ContactForm extends Component {
           }}
         >
           <Field
-            name="phone"
-            type="number"
+            name="email"
+            type="email"
             component={renderField}
-            label="Téléphone"
+            label="Email"
             style={{
               backgroundColor: "#FFFFFF",
               color: "#181616",
@@ -198,10 +185,10 @@ class ContactForm extends Component {
           }}
         >
           <Field
-            name="email"
-            type="email"
+            name="phone"
+            type="number"
             component={renderField}
-            label="Email"
+            label="Téléphone"
             style={{
               backgroundColor: "#FFFFFF",
               color: "#181616",
