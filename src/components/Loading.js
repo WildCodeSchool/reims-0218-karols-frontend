@@ -12,7 +12,7 @@ const Loading = ({ type, color }) => (
       backgroundColor: "grey",
       opacity: "0.5",
       position: "fixed",
-      zIndex: "1"
+      zIndex: "2000"
     }}
   >
     <ReactLoading
@@ -25,8 +25,7 @@ const Loading = ({ type, color }) => (
         left: "50%",
         marginTop: "-100px",
         marginLeft: "-100px",
-        position: "absolute",
-        zIndex: "1"
+        position: "absolute"
       }}
     />
   </div>
