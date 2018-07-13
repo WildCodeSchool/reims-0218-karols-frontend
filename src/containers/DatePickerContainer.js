@@ -84,7 +84,7 @@ class DatePickerSelect extends Component {
           >
             Choisir une date
           </Button>
-          <Modal isOpen={this.state.modal} style={{ zIndex: "-100" }}>
+          <Modal isOpen={this.state.modal}>
             <ModalHeader toggle={this.closeModal.bind(this)}>
               Choisissez la date de votre prestation
             </ModalHeader>
