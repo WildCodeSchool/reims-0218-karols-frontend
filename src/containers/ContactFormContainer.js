@@ -95,7 +95,6 @@ class ContactForm extends Component {
 
   render() {
     const { handleSubmit } = this.props
-    console.log(this.props.selectedForm)
     return (
       <form
         onSubmit={handleSubmit}
@@ -135,12 +134,6 @@ class ContactForm extends Component {
             type="text"
             component={renderField}
             label="Prénom"
-            style={{
-              backgroundColor: "#FFFFFF",
-              color: "#181616",
-              marginLeft: "20px",
-              borderRadius: "10px"
-            }}
           />
         </div>
         <div
@@ -153,12 +146,6 @@ class ContactForm extends Component {
             type="text"
             component={renderField}
             label="Nom"
-            style={{
-              backgroundColor: "#FFFFFF",
-              color: "#181616",
-              marginLeft: "20px",
-              borderRadius: "10px"
-            }}
           />
         </div>
         <div
@@ -171,12 +158,6 @@ class ContactForm extends Component {
             type="email"
             component={renderField}
             label="Email"
-            style={{
-              backgroundColor: "#FFFFFF",
-              color: "#181616",
-              marginLeft: "20px",
-              borderRadius: "10px"
-            }}
           />
         </div>
         <div
@@ -189,12 +170,6 @@ class ContactForm extends Component {
             type="number"
             component={renderField}
             label="Téléphone"
-            style={{
-              backgroundColor: "#FFFFFF",
-              color: "#181616",
-              marginLeft: "20px",
-              borderRadius: "10px"
-            }}
           />
         </div>
         <Recaptcha
