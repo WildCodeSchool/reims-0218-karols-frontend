@@ -1,6 +1,7 @@
 import React from "react"
 import ListCalendarTime from "./ListCalendarTime"
 import CalendarDay from "./CalendarDay"
+import { Scrollbars } from "react-custom-scrollbars"
 
 const ListCalendarDayTime = ({ day, selectTimeSlot }) => (
   <div
@@ -8,15 +9,17 @@ const ListCalendarDayTime = ({ day, selectTimeSlot }) => (
       flexGrow: "1",
       flexShrink: "0",
       flexBasis: "0px",
-      margin: "0 7px",
+      margin: "0 6px",
       maxWidth: "75px"
     }}
   >
     <CalendarDay date={day.date} />
-    <ListCalendarTime
-      timeSlots={day.timeSlots}
-      selectTimeSlot={selectTimeSlot}
-    />
+    <Scrollbars style={{ height: 200 }}>
+      <ListCalendarTime
+        timeSlots={day.timeSlots}
+        selectTimeSlot={selectTimeSlot}
+      />
+    </Scrollbars>
   </div>
 )
 
