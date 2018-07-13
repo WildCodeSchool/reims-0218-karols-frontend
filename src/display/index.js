@@ -44,14 +44,6 @@ export const showDatePicker = state =>
 
 export const showCalendar = state => state.timeSlots.length >= 1
 
-export const showHeightFirstTimeSlots = (timeSlots, showMore) =>
-  !showMore
-    ? timeSlots.map(day => ({
-        ...day,
-        timeSlots: day.timeSlots.slice(0, 8)
-      }))
-    : timeSlots
-
 export const showForm = state => getSelectedTimeSlot(state)
 
 export const showCountPeopleTable = state =>
