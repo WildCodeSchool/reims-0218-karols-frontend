@@ -23,7 +23,7 @@ const validate = values => {
   }
   if (!values.phone) {
     errors.phone = "Champ requis"
-  } else if (!/^(0|[1-9][0-9]{9})$/i.test(values.phone)) {
+  } else if (!/^(0|[0-9][0-9]{9})$/i.test(values.phone)) {
     errors.phone = "Veuillez renter un numéro de téléphone à 10 chiffres"
   }
   return errors
