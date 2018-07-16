@@ -7,6 +7,7 @@ import { Button, Alert } from "reactstrap"
 import { fetchCreateReservation } from "../api/fetchCreateReservation"
 import { makeSuccessReservation } from "../actions/actions"
 import { getSelectedForm, getReservationData, getFormErrors } from "../resume"
+import ButtonRefresh from "../components/ButtonRefresh"
 
 const validate = values => {
   const errors = {}
@@ -201,6 +202,7 @@ class ContactForm extends Component {
         >
           Valider
         </Button>{" "}
+        <ButtonRefresh />
         {this.props.showAlert && (
           <Alert
             style={{
