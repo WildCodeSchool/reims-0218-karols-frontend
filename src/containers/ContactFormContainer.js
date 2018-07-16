@@ -5,13 +5,13 @@ import { connect } from "react-redux"
 import { Button, Alert } from "reactstrap"
 
 import { fetchCreateReservation } from "../api/fetchCreateReservation"
-import { makeSuccessReservation } from "../actions/actions"
 import {
   getSelectedForm,
   getReservationData,
   getFormErrors,
   getSuccessReservation
 } from "../resume"
+import { makeSuccessReservation, requestLoading } from "../actions/actions"
 
 const validate = values => {
   const errors = {}
@@ -71,6 +71,7 @@ const renderField = ({ label, input, meta: { touched, error } }) => (
 )
 
 const mapDispatchToProps = dispatch => ({
+  onLoading: loading => dispatch(requestLoading(loading)),
   success: () => {
     dispatch(makeSuccessReservation())
   }
@@ -202,6 +203,7 @@ class ContactForm extends Component {
           color="secondary"
           onClick={() => {
             return fetchCreateReservation({
+              loading: this.props.onLoading(true),
               contact: this.props.selectedForm,
               ...this.props.reservationData
             }).then(data => {
