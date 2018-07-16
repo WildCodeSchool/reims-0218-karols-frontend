@@ -8,7 +8,8 @@ import { showFourFirstTimeSlots } from "../display/index"
 import { Button } from "reactstrap"
 import {
   makeTimeslotsReceived,
-  makeChooseSlotReservation
+  makeChooseSlotReservation,
+  requestLoading
 } from "../actions/actions"
 import { getSelectedShop, getReservationData } from "../resume"
 
@@ -23,6 +24,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onTimeSlotsReceived: response => dispatch(makeTimeslotsReceived(response)),
+  onLoading: loading => dispatch(requestLoading(loading)),
   onTimeSlotSelected: timeSlot => dispatch(makeChooseSlotReservation(timeSlot))
 })
 
@@ -39,6 +41,7 @@ class TimeSlots extends Component {
         const dateMinusOne = DateTime.fromISO(timeSlot.date)
           .plus({ days: -1 })
           .toISODate()
+        this.props.onLoading(true)
         fetchDateSelected(dateMinusOne, this.props.reservationData).then(
           response => {
             this.props.onTimeSlotsReceived(response)
@@ -54,6 +57,7 @@ class TimeSlots extends Component {
         const datePlusOne = DateTime.fromISO(timeSlot.date)
           .plus({ days: +1 })
           .toISODate()
+        this.props.onLoading(true)
         fetchDateSelected(datePlusOne, this.props.reservationData).then(
           response => {
             this.props.onTimeSlotsReceived(response)
@@ -104,7 +108,4 @@ class TimeSlots extends Component {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TimeSlots)
+export default connect(mapStateToProps, mapDispatchToProps)(TimeSlots)
