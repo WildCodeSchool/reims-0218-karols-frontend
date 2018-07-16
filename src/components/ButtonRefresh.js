@@ -6,8 +6,7 @@ const ButtonRefresh = () => {
     <div>
       <Button
         outline
-        color="primary"
-        type="button"
+        color="secondary"
         value="Refresh Page"
         href="http://localhost:3000/"
       >

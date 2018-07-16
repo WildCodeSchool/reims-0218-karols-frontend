@@ -216,7 +216,13 @@ class ContactForm extends Component {
         >
           Valider
         </Button>{" "}
-        {this.props.buttonRefresh && <ButtonRefresh />}
+        <div
+          style={{
+            marginTop: "30px"
+          }}
+        >
+          {this.props.buttonRefresh && <ButtonRefresh />}
+        </div>
         {this.props.showAlert && (
           <Alert
             style={{
