@@ -183,7 +183,7 @@ class ContactForm extends Component {
           />
         </div>
         <Recaptcha
-          sitekey={"6LenQWAUAAAAAPa99VtqSlKXvI_uNBqZA5XyD-hQ"}
+          sitekey={process.env.REACT_APP_SITE_KEY}
           callback={this.verifyCallback}
           expiredCallback={() => console.log("expiredcaptcha")}
           locale="fr-FR"
