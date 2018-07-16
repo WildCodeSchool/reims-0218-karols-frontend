@@ -5,8 +5,13 @@ import { connect } from "react-redux"
 import { Button, Alert } from "reactstrap"
 
 import { fetchCreateReservation } from "../api/fetchCreateReservation"
+import {
+  getSelectedForm,
+  getReservationData,
+  getFormErrors,
+  getSuccessReservation
+} from "../resume"
 import { makeSuccessReservation, requestLoading } from "../actions/actions"
-import { getSelectedForm, getReservationData, getFormErrors } from "../resume"
 
 const validate = values => {
   const errors = {}
@@ -76,6 +81,7 @@ const mapStateToProps = state => ({
   selectedForm: getSelectedForm(state),
   reservationData: getReservationData(state),
   formErrors: getFormErrors(state),
+  successReservation: getSuccessReservation(state),
   showAlert: state.reservation.success
 })
 
@@ -188,7 +194,11 @@ class ContactForm extends Component {
           }}
         />
         <Button
-          disabled={!this.state.validCaptcha || this.props.formErrors}
+          disabled={
+            !this.state.validCaptcha ||
+            this.props.formErrors ||
+            this.props.successReservation
+          }
           outline
           color="secondary"
           onClick={() => {
