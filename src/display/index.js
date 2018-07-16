@@ -55,3 +55,5 @@ export const showCounter = state =>
     .length > 0 ||
   state.services.filter(service => service.selected && service.id === 2)
     .length > 0
+
+export const showButtonRefresh = state => state.reservation.success
