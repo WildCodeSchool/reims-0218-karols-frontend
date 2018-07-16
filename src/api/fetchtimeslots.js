@@ -1,2 +1,4 @@
 export const fetchTimeSlots = () =>
-  fetch("http://localhost:8000/timeslots").then(res => res.json())
+  fetch(`http://${process.env.REACT_APP_SERVER_URL}/timeslots`).then(res =>
+    res.json()
+  )
