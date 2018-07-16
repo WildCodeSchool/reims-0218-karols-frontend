@@ -9,6 +9,8 @@ export const getSelectedForm = state =>
 export const getFormErrors = state =>
   state.form.contact ? state.form.contact.syncErrors : undefined
 
+export const getSuccessReservation = state => state.reservation.success
+
 export const getSelectedGender = state =>
   state.genders.find(gender => gender.selected)
 

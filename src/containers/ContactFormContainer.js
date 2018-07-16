@@ -6,7 +6,12 @@ import { Button, Alert } from "reactstrap"
 
 import { fetchCreateReservation } from "../api/fetchCreateReservation"
 import { makeSuccessReservation } from "../actions/actions"
-import { getSelectedForm, getReservationData, getFormErrors } from "../resume"
+import {
+  getSelectedForm,
+  getReservationData,
+  getFormErrors,
+  getSuccessReservation
+} from "../resume"
 
 const validate = values => {
   const errors = {}
@@ -75,6 +80,7 @@ const mapStateToProps = state => ({
   selectedForm: getSelectedForm(state),
   reservationData: getReservationData(state),
   formErrors: getFormErrors(state),
+  successReservation: getSuccessReservation(state),
   showAlert: state.reservation.success
 })
 
@@ -187,7 +193,11 @@ class ContactForm extends Component {
           }}
         />
         <Button
-          disabled={!this.state.validCaptcha || this.props.formErrors}
+          disabled={
+            !this.state.validCaptcha ||
+            this.props.formErrors ||
+            this.props.successReservation === true
+          }
           outline
           color="secondary"
           onClick={() => {
