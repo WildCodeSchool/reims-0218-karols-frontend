@@ -2,6 +2,7 @@ import React from "react"
 import ReactDOM from "react-dom"
 import ListCalendarTime from "./ListCalendarTime"
 import renderer from "react-test-renderer"
+const { DateTime, Interval } = require("luxon")
 
 it("renders without crashing", () => {
   const div = document.createElement("div")

@@ -3,7 +3,6 @@ import { connect } from "react-redux"
 import { Container } from "reactstrap"
 
 import { fetchDateSelected } from "../api/fetchDateSelected"
-import { showFourFirstTimeSlots } from "../display/index"
 
 import { Button } from "reactstrap"
 import {
@@ -77,27 +76,15 @@ class TimeSlots extends Component {
       <Container>
         <ResultCalendar
           handleMinusClick={this.handleMinusClick}
-          weekTimeSlots={showFourFirstTimeSlots(
-            this.props.timeSlots,
-            this.state.showMore
-          )}
+          weekTimeSlots={this.props.timeSlots}
           handlePlusClick={this.handlePlusClick}
           selectTimeSlot={this.props.onTimeSlotSelected}
         />
         <div className="availabilities-more-button mt-3">
-          <Button
-            onClick={() => this.seeMoreTimeSlots()}
-            outline
-            color="secondary"
-          >
-            {this.state.showMore
-              ? "Voir moins d'horaires"
-              : "Voir plus d'horaires"}
-          </Button>{" "}
           <div className="phone mt-3">
             {this.props.selectedShop && (
               <p className="shop">
-                Si vous ne trouvez aucun crénaux, n'hésitez pas à appeler au{" "}
+                Si vous ne trouvez aucun crénau, contactez le{" "}
                 {this.props.selectedShop.phone}
               </p>
             )}

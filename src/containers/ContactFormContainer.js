@@ -6,7 +6,64 @@ import { Button, Alert } from "reactstrap"
 
 import { fetchCreateReservation } from "../api/fetchCreateReservation"
 import { makeSuccessReservation, requestLoading } from "../actions/actions"
-import { getSelectedForm, getReservationData } from "../resume"
+import { getSelectedForm, getReservationData, getFormErrors } from "../resume"
+
+const validate = values => {
+  const errors = {}
+  if (!values.firstName) {
+    errors.firstName = "Champ requis"
+  }
+  if (!values.lastName) {
+    errors.lastName = "Champ requis"
+  }
+  if (!values.email) {
+    errors.email = "Champ requis"
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = "Veuillez rentrer une adresse mail valide"
+  }
+  if (!values.phone) {
+    errors.phone = "Champ requis"
+  } else if (!/^(0|[0-9][0-9]{9})$/i.test(values.phone)) {
+    errors.phone = "Veuillez renter un numéro de téléphone à 10 chiffres"
+  }
+  return errors
+}
+
+const renderField = ({ label, input, meta: { touched, error } }) => (
+  <div>
+    <label
+      style={{
+        display: "inline-block",
+        width: "140px",
+        textAlign: "center"
+      }}
+    >
+      {label}
+    </label>
+    <input
+      style={{
+        backgroundColor: "#FFFFFF",
+        color: "#181616",
+        marginLeft: "20px",
+        borderRadius: "10px"
+      }}
+      {...input}
+    />
+    <div>
+      {touched &&
+        error && (
+          <span
+            style={{
+              color: "red",
+              fontSize: "13px"
+            }}
+          >
+            {error}
+          </span>
+        )}
+    </div>
+  </div>
+)
 
 const mapDispatchToProps = dispatch => ({
   onLoading: loading => dispatch(requestLoading(loading)),
@@ -18,6 +75,7 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
   selectedForm: getSelectedForm(state),
   reservationData: getReservationData(state),
+  formErrors: getFormErrors(state),
   showAlert: state.reservation.success
 })
 
@@ -72,26 +130,11 @@ class ContactForm extends Component {
             marginTop: "20px"
           }}
         >
-          <label
-            htmlFor="firstName"
-            style={{
-              display: "inline-block",
-              width: "140px",
-              textAlign: "center"
-            }}
-          >
-            Prénom
-          </label>
           <Field
             name="firstName"
-            component="input"
             type="text"
-            style={{
-              backgroundColor: "#FFFFFF",
-              color: "#181616",
-              marginLeft: "20px",
-              borderRadius: "10px"
-            }}
+            component={renderField}
+            label="Prénom"
           />
         </div>
         <div
@@ -99,26 +142,11 @@ class ContactForm extends Component {
             marginTop: "20px"
           }}
         >
-          <label
-            htmlFor="lastName"
-            style={{
-              display: "inline-block",
-              width: "140px",
-              textAlign: "center"
-            }}
-          >
-            Nom
-          </label>
           <Field
             name="lastName"
-            component="input"
             type="text"
-            style={{
-              backgroundColor: "#FFFFFF",
-              color: "#181616",
-              marginLeft: "20px",
-              borderRadius: "10px"
-            }}
+            component={renderField}
+            label="Nom"
           />
         </div>
         <div
@@ -126,26 +154,23 @@ class ContactForm extends Component {
             marginTop: "20px"
           }}
         >
-          <label
-            htmlFor="email"
-            style={{
-              display: "inline-block",
-              width: "140px",
-              textAlign: "center"
-            }}
-          >
-            Email
-          </label>
           <Field
             name="email"
-            component="input"
             type="email"
-            style={{
-              backgroundColor: "#FFFFFF",
-              color: "#181616",
-              marginLeft: "20px",
-              borderRadius: "10px"
-            }}
+            component={renderField}
+            label="Email"
+          />
+        </div>
+        <div
+          style={{
+            marginTop: "20px"
+          }}
+        >
+          <Field
+            name="phone"
+            type="number"
+            component={renderField}
+            label="Téléphone"
           />
         </div>
         <Recaptcha
@@ -163,7 +188,7 @@ class ContactForm extends Component {
           }}
         />
         <Button
-          disabled={!this.state.validCaptcha}
+          disabled={!this.state.validCaptcha || this.props.formErrors}
           outline
           color="secondary"
           onClick={() => {
@@ -176,7 +201,7 @@ class ContactForm extends Component {
             })
           }}
         >
-          Creer cette réservation
+          Valider
         </Button>{" "}
         {this.props.showAlert && (
           <Alert
@@ -194,7 +219,8 @@ class ContactForm extends Component {
 }
 
 ContactForm = reduxForm({
-  form: "contact"
+  form: "contact",
+  validate
 })(ContactForm)
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactForm)

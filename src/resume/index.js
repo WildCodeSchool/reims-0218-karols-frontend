@@ -6,6 +6,9 @@ export const getSelectedService = state =>
 export const getSelectedForm = state =>
   state.form.contact ? state.form.contact.values : {}
 
+export const getFormErrors = state =>
+  state.form.contact ? state.form.contact.syncErrors : undefined
+
 export const getSelectedGender = state =>
   state.genders.find(gender => gender.selected)
 
