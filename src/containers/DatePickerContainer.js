@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { makeTimeslotsReceived } from "../actions/actions"
+import { makeTimeslotsReceived, requestLoading } from "../actions/actions"
 import InfiniteCalendar from "react-infinite-calendar"
 import "react-infinite-calendar/styles.css" // Make sure to import the default stylesheet
 import DatePickerTitle from "../components/DatePickerTitle"
@@ -21,6 +21,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+  onLoading: loading => dispatch(requestLoading(loading)),
   onTimeSlotsReceived: response => dispatch(makeTimeslotsReceived(response))
 })
 
@@ -50,6 +51,7 @@ class DatePickerSelect extends Component {
   validate() {
     // Fetch route date selected
     const dateFromJsDate = DateTime.fromJSDate(this.state.dateSelected).toISO()
+    this.props.onLoading(true)
     fetchDateSelected(dateFromJsDate, this.props.reservartionData).then(
       response => {
         this.props.onTimeSlotsReceived(response)
@@ -144,7 +146,4 @@ class DatePickerSelect extends Component {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(DatePickerSelect)
+export default connect(mapStateToProps, mapDispatchToProps)(DatePickerSelect)

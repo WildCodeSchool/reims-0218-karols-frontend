@@ -5,10 +5,75 @@ import { connect } from "react-redux"
 import { Button, Alert } from "reactstrap"
 
 import { fetchCreateReservation } from "../api/fetchCreateReservation"
-import { makeSuccessReservation } from "../actions/actions"
-import { getSelectedForm, getReservationData } from "../resume"
+import {
+  getSelectedForm,
+  getReservationData,
+  getFormErrors,
+  getSuccessReservation
+} from "../resume"
+import { makeSuccessReservation, requestLoading } from "../actions/actions"
+import { showButtonRefresh } from "../display"
+import ButtonRefresh from "../components/ButtonRefresh"
+
+const validate = values => {
+  const errors = {}
+  if (!values.firstName) {
+    errors.firstName = "Champ requis"
+  }
+  if (!values.lastName) {
+    errors.lastName = "Champ requis"
+  }
+  if (!values.email) {
+    errors.email = "Champ requis"
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = "Veuillez rentrer une adresse mail valide"
+  }
+  if (!values.phone) {
+    errors.phone = "Champ requis"
+  } else if (!/^(0|[0-9][0-9]{9})$/i.test(values.phone)) {
+    errors.phone = "Veuillez renter un numéro de téléphone à 10 chiffres"
+  }
+  return errors
+}
+
+const renderField = ({ label, input, meta: { touched, error } }) => (
+  <div>
+    <label
+      style={{
+        display: "inline-block",
+        width: "140px",
+        textAlign: "center"
+      }}
+    >
+      {label}
+    </label>
+    <input
+      style={{
+        backgroundColor: "#FFFFFF",
+        color: "#181616",
+        marginLeft: "20px",
+        borderRadius: "10px"
+      }}
+      {...input}
+    />
+    <div>
+      {touched &&
+        error && (
+          <span
+            style={{
+              color: "red",
+              fontSize: "13px"
+            }}
+          >
+            {error}
+          </span>
+        )}
+    </div>
+  </div>
+)
 
 const mapDispatchToProps = dispatch => ({
+  onLoading: loading => dispatch(requestLoading(loading)),
   success: () => {
     dispatch(makeSuccessReservation())
   }
@@ -17,6 +82,9 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
   selectedForm: getSelectedForm(state),
   reservationData: getReservationData(state),
+  formErrors: getFormErrors(state),
+  successReservation: getSuccessReservation(state),
+  buttonRefresh: showButtonRefresh(state),
   showAlert: state.reservation.success
 })
 
@@ -71,26 +139,11 @@ class ContactForm extends Component {
             marginTop: "20px"
           }}
         >
-          <label
-            htmlFor="firstName"
-            style={{
-              display: "inline-block",
-              width: "140px",
-              textAlign: "center"
-            }}
-          >
-            Prénom
-          </label>
           <Field
             name="firstName"
-            component="input"
             type="text"
-            style={{
-              backgroundColor: "#FFFFFF",
-              color: "#181616",
-              marginLeft: "20px",
-              borderRadius: "10px"
-            }}
+            component={renderField}
+            label="Prénom"
           />
         </div>
         <div
@@ -98,26 +151,11 @@ class ContactForm extends Component {
             marginTop: "20px"
           }}
         >
-          <label
-            htmlFor="lastName"
-            style={{
-              display: "inline-block",
-              width: "140px",
-              textAlign: "center"
-            }}
-          >
-            Nom
-          </label>
           <Field
             name="lastName"
-            component="input"
             type="text"
-            style={{
-              backgroundColor: "#FFFFFF",
-              color: "#181616",
-              marginLeft: "20px",
-              borderRadius: "10px"
-            }}
+            component={renderField}
+            label="Nom"
           />
         </div>
         <div
@@ -125,30 +163,27 @@ class ContactForm extends Component {
             marginTop: "20px"
           }}
         >
-          <label
-            htmlFor="email"
-            style={{
-              display: "inline-block",
-              width: "140px",
-              textAlign: "center"
-            }}
-          >
-            Email
-          </label>
           <Field
             name="email"
-            component="input"
             type="email"
-            style={{
-              backgroundColor: "#FFFFFF",
-              color: "#181616",
-              marginLeft: "20px",
-              borderRadius: "10px"
-            }}
+            component={renderField}
+            label="Email"
+          />
+        </div>
+        <div
+          style={{
+            marginTop: "20px"
+          }}
+        >
+          <Field
+            name="phone"
+            type="number"
+            component={renderField}
+            label="Téléphone"
           />
         </div>
         <Recaptcha
-          sitekey={"6LenQWAUAAAAAPa99VtqSlKXvI_uNBqZA5XyD-hQ"}
+          sitekey={process.env.REACT_APP_SITE_KEY}
           callback={this.verifyCallback}
           expiredCallback={() => console.log("expiredcaptcha")}
           locale="fr-FR"
@@ -162,11 +197,20 @@ class ContactForm extends Component {
           }}
         />
         <Button
+<<<<<<< HEAD
           disabled={/*!this.state.validCaptcha*/ false}
+=======
+          disabled={
+            !this.state.validCaptcha ||
+            this.props.formErrors ||
+            this.props.successReservation
+          }
+>>>>>>> develop
           outline
           color="secondary"
           onClick={() => {
             return fetchCreateReservation({
+              loading: this.props.onLoading(true),
               contact: this.props.selectedForm,
               ...this.props.reservationData
             }).then(data => {
@@ -174,8 +218,15 @@ class ContactForm extends Component {
             })
           }}
         >
-          Creer cette réservation
+          Valider
         </Button>{" "}
+        <div
+          style={{
+            marginTop: "30px"
+          }}
+        >
+          {this.props.buttonRefresh && <ButtonRefresh />}
+        </div>
         {this.props.showAlert && (
           <Alert
             style={{
@@ -192,7 +243,8 @@ class ContactForm extends Component {
 }
 
 ContactForm = reduxForm({
-  form: "contact"
+  form: "contact",
+  validate
 })(ContactForm)
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactForm)

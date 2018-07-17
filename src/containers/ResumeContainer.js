@@ -20,7 +20,7 @@ const mapStateToProps = state => ({
 const transformTimeSlot = timeSlot =>
   DateTime.fromISO(timeSlot.time.s)
     .setLocale("fr")
-    .toFormat("cccc dd LLLL HH 'h' mm")
+    .toFormat("'à' HH 'h' mm 'le' cccc dd LLLL ")
 
 class ShowResume extends Component {
   render() {
@@ -41,14 +41,14 @@ class ShowResume extends Component {
 
         {reservationData.shop && (
           <p className="shop">
-            Votre réservation se fera à {reservationData.shop.city}
+            Votre réservation se fera à KAROLS {reservationData.shop.city}
           </p>
         )}
         {(reservationData.service && reservationData.service.id) === 1 && (
           <div>
             {reservationData.service && (
               <p className="préparation">
-                Vous avez choisi {reservationData.service.name}
+                Vous avez choisi l'offre : {reservationData.service.name}
               </p>
             )}
             {reservationData.preparations &&
@@ -61,7 +61,7 @@ class ShowResume extends Component {
               })}
             {reservationData.timeSlot && (
               <p className="horaire">
-                Vous désirez être pris en charge le {""}
+                Date de RDV au salon {""}
                 {transformTimeSlot(reservationData.timeSlot)}
               </p>
             )}
@@ -71,7 +71,7 @@ class ShowResume extends Component {
           <div>
             {reservationData.service && (
               <p className="préparation">
-                Vous avez choisi {reservationData.service.name}
+                Vous avez choisi l'offre : {reservationData.service.name}
               </p>
             )}
             {reservationData.countTable && (
@@ -79,7 +79,7 @@ class ShowResume extends Component {
             )}
             {reservationData.timeSlot && (
               <p className="horaire">
-                Vous désirez être pris en charge le {""}
+                Date de RDV au salon {""}
                 {transformTimeSlot(reservationData.timeSlot)}
               </p>
             )}
@@ -89,7 +89,7 @@ class ShowResume extends Component {
           <div>
             {reservationData.service && (
               <p className="préparation">
-                Vous avez choisi {reservationData.service.name}
+                Vous avez choisi l'offre : {reservationData.service.name}
               </p>
             )}
             {reservationData.countGender && (
@@ -124,7 +124,7 @@ class ShowResume extends Component {
             )}
             {reservationData.timeSlot && (
               <p className="horaire">
-                Vous désirez être pris en charge le {""}
+                Date de RDV au salon {""}
                 {transformTimeSlot(reservationData.timeSlot)}
               </p>
             )}

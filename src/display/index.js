@@ -40,17 +40,12 @@ export const showDatePicker = state =>
   ).length > 0 &&
     showSex(state)) ||
   state.services.filter(service => service.selected && service.id === 2)
-    .length > 0
+    .length > 0 ||
+  (state.services.filter(service => service.selected && service.id === 3)
+    .length > 0 &&
+    state.genders.filter(gender => gender.count >= 1).length > 0)
 
 export const showCalendar = state => state.timeSlots.length >= 1
-
-export const showFourFirstTimeSlots = (timeSlots, showMore) =>
-  !showMore
-    ? timeSlots.map(day => ({
-        ...day,
-        timeSlots: day.timeSlots.slice(0, 4)
-      }))
-    : timeSlots
 
 export const showForm = state => getSelectedTimeSlot(state)
 
@@ -63,3 +58,5 @@ export const showCounter = state =>
     .length > 0 ||
   state.services.filter(service => service.selected && service.id === 2)
     .length > 0
+
+export const showButtonRefresh = state => state.reservation.success

@@ -1,4 +1,4 @@
 export const fetchShopsPrestations = () =>
-  fetch("http://api.karolsresa.fr/shops-prestations").then(res =>
-    res.json()
+  fetch(`http://${process.env.REACT_APP_SERVER_URL}/shops-prestations`).then(
+    res => res.json()
   )

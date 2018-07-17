@@ -1,5 +1,5 @@
 export const fetchDateSelected = (date, reservationData) =>
-  fetch(`http://api.karolsresa.fr/date-selected/${date}`, {
+  fetch(`http://${process.env.REACT_APP_SERVER_URL}/date-selected/${date}`, {
     method: "POST",
     body: JSON.stringify(reservationData),
     headers: {
