@@ -197,15 +197,11 @@ class ContactForm extends Component {
           }}
         />
         <Button
-<<<<<<< HEAD
-          disabled={/*!this.state.validCaptcha*/ false}
-=======
           disabled={
             !this.state.validCaptcha ||
             this.props.formErrors ||
             this.props.successReservation
           }
->>>>>>> develop
           outline
           color="secondary"
           onClick={() => {
