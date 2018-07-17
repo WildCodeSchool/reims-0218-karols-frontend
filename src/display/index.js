@@ -40,7 +40,10 @@ export const showDatePicker = state =>
   ).length > 0 &&
     showSex(state)) ||
   state.services.filter(service => service.selected && service.id === 2)
-    .length > 0
+    .length > 0 ||
+  (state.services.filter(service => service.selected && service.id === 3)
+    .length > 0 &&
+    state.genders.filter(gender => gender.count >= 1).length > 0)
 
 export const showCalendar = state => state.timeSlots.length >= 1
 
