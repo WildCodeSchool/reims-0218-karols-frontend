@@ -9,12 +9,14 @@ import {
 import { scroller } from "react-scroll"
 import Zoom from "react-reveal/Zoom"
 import { showCounter } from "../display"
+import { getCountByGender } from "../resume/index"
 
 const mapStateToProps = state => ({
   prestations: state.prestations.filter(
     prestation => prestation.gender === "F"
   ),
-  showCounter: showCounter(state)
+  showCounter: showCounter(state),
+  maxCountFemale: getCountByGender(state, "F")
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -24,8 +26,8 @@ const mapDispatchToProps = dispatch => ({
   handleMinus: (prestationId, preparationId) => {
     dispatch(makeDecrementPrestation(prestationId, preparationId))
   },
-  handlePlus: (prestationId, preparationId) => {
-    dispatch(makeIncrementPrestation(prestationId, preparationId))
+  handlePlus: max => (prestationId, preparationId) => {
+    dispatch(makeIncrementPrestation(prestationId, preparationId, max))
   }
 })
 
@@ -45,7 +47,7 @@ class FemaleSelected extends Component {
             {...this.props}
             showCounter={this.props.showCounter}
             handleMinus={this.props.handleMinus}
-            handlePlus={this.props.handlePlus}
+            handlePlus={this.props.handlePlus(this.props.maxCountFemale)}
           />
         </Zoom>
       </div>
