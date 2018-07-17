@@ -1,5 +1,8 @@
-import { CHOOSE_TIMESLOT } from "../actions/actions"
-import { TIMESLOTS_RECEIVED } from "../actions/actions"
+import {
+  CHOOSE_TIMESLOT,
+  TIMESLOTS_RECEIVED,
+  EMPTY_TIMESLOTS
+} from "../actions/actions"
 
 const initialState = []
 
@@ -19,6 +22,9 @@ const timeSlot = (prevState = initialState, action) => {
       ...day,
       timeSlots: day.timeSlots.filter(timeSlot => timeSlot.available)
     }))
+  }
+  if (action.type === EMPTY_TIMESLOTS) {
+    return []
   }
   return prevState
 }
