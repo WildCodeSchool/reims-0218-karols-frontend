@@ -198,9 +198,8 @@ class ContactForm extends Component {
         />
         <Button
           disabled={
-            !this.state.validCaptcha ||
-            this.props.formErrors ||
-            this.props.successReservation
+            /*!this.state.validCaptcha ||*/
+            this.props.formErrors || this.props.successReservation
           }
           outline
           color="secondary"
