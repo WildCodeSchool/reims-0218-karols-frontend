@@ -82,3 +82,8 @@ export const getCountTable = state => state.countPeopleTable.count
 export const getCountGender = state => state.genders
 
 export const getCountPreparation = state => state.prestations
+
+export const getCountByPrestation = (prestationId, prevState) =>
+  prevState
+    .find(prestation => prestationId === prestation.id)
+    .preparations.reduce((acc, preparation) => acc + preparation.count, 0)
