@@ -12,6 +12,8 @@ import {
   getSuccessReservation
 } from "../resume"
 import { makeSuccessReservation, requestLoading } from "../actions/actions"
+import { showButtonRefresh } from "../display"
+import ButtonRefresh from "../components/ButtonRefresh"
 
 const validate = values => {
   const errors = {}
@@ -82,6 +84,7 @@ const mapStateToProps = state => ({
   reservationData: getReservationData(state),
   formErrors: getFormErrors(state),
   successReservation: getSuccessReservation(state),
+  buttonRefresh: showButtonRefresh(state),
   showAlert: state.reservation.success
 })
 
@@ -213,6 +216,13 @@ class ContactForm extends Component {
         >
           Valider
         </Button>{" "}
+        <div
+          style={{
+            marginTop: "30px"
+          }}
+        >
+          {this.props.buttonRefresh && <ButtonRefresh />}
+        </div>
         {this.props.showAlert && (
           <Alert
             style={{
