@@ -5,6 +5,8 @@ import {
   DECREMENT_PRESTATION
 } from "../actions/actions"
 
+import { getCountByPrestation } from "../resume/index"
+
 const initialState = []
 
 const prestations = (prevState = initialState, action) => {
@@ -32,6 +34,12 @@ const prestations = (prevState = initialState, action) => {
   }
 
   if (action.type === INCREMENT_PRESTATION) {
+    // recupérer le nombre de préparation sélectionner pour cette préparation
+    // comparer avec max
+    // si c'est > ou = à max, return prevstate
+    if (getCountByPrestation(action.prestationId, prevState) >= action.max) {
+      return prevState
+    }
     return prevState.map(prestation => ({
       ...prestation,
       preparations: prestation.preparations.map(preparation => ({

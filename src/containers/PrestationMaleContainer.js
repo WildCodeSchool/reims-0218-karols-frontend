@@ -10,12 +10,14 @@ import { scroller } from "react-scroll"
 import Zoom from "react-reveal/Zoom"
 
 import { showCounter } from "../display"
+import { getCountByGender } from "../resume/index"
 
 const mapStateToProps = state => ({
   prestations: state.prestations.filter(
     prestation => prestation.gender === "M"
   ),
   showCounter: showCounter(state),
+  maxCountMale: getCountByGender(state, "M"),
   timeSlots: state.timeSlots
 })
 
@@ -25,8 +27,8 @@ const mapDispatchToProps = dispatch => ({
   handleMinus: (prestationId, preparationId) => {
     dispatch(makeDecrementPrestation(prestationId, preparationId))
   },
-  handlePlus: (prestationId, preparationId) => {
-    dispatch(makeIncrementPrestation(prestationId, preparationId))
+  handlePlus: max => (prestationId, preparationId) => {
+    dispatch(makeIncrementPrestation(prestationId, preparationId, max))
   }
 })
 
@@ -55,7 +57,7 @@ class MaleSelected extends Component {
             }
             handlePlus={
               this.props.timeSlots.length === 0
-                ? this.props.handlePlus
+                ? this.props.handlePlus(this.props.maxCountMale)
                 : () => {}
             }
           />

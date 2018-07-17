@@ -75,10 +75,11 @@ export const makeDecrementSex = sex => ({
   sex
 })
 
-export const makeIncrementPrestation = (prestationId, preparationId) => ({
+export const makeIncrementPrestation = (prestationId, preparationId, max) => ({
   type: INCREMENT_PRESTATION,
   prestationId,
-  preparationId
+  preparationId,
+  max
 })
 
 export const makeDecrementPrestation = (prestationId, preparationId) => ({
