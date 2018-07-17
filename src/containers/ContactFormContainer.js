@@ -82,7 +82,8 @@ class ContactForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      validCaptcha: false
+      validCaptcha: false,
+      data: {}
     }
     this.verifyCallback = this.verifyCallback.bind(this)
   }
@@ -94,6 +95,7 @@ class ContactForm extends Component {
   }
 
   render() {
+    this.formDatas = sessionStorage.getItem("datas")
     const { handleSubmit } = this.props
     return (
       <form
@@ -195,6 +197,10 @@ class ContactForm extends Component {
               contact: this.props.selectedForm,
               ...this.props.reservationData
             }).then(data => {
+              localStorage.setItem(
+                "datas",
+                JSON.stringify(this.props.selectedForm)
+              )
               this.props.success()
             })
           }}
@@ -213,6 +219,13 @@ class ContactForm extends Component {
         )}
       </form>
     )
+  }
+
+  componentDidMount() {
+    let data = localStorage.getItem("datas")
+    if (data) {
+      this.setState({ data: JSON.parse(data) })
+    }
   }
 }
 
