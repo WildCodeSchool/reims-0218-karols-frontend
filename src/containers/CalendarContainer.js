@@ -8,7 +8,8 @@ import { Button } from "reactstrap"
 import {
   makeTimeslotsReceived,
   makeChooseSlotReservation,
-  requestLoading
+  requestLoading,
+  makeEmptyTimeslots
 } from "../actions/actions"
 import { getSelectedShop, getReservationData } from "../resume"
 
@@ -24,7 +25,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   onTimeSlotsReceived: response => dispatch(makeTimeslotsReceived(response)),
   onLoading: loading => dispatch(requestLoading(loading)),
-  onTimeSlotSelected: timeSlot => dispatch(makeChooseSlotReservation(timeSlot))
+  onTimeSlotSelected: timeSlot => dispatch(makeChooseSlotReservation(timeSlot)),
+  onNewChoices: () => dispatch(makeEmptyTimeslots())
 })
 
 class TimeSlots extends Component {
@@ -88,6 +90,9 @@ class TimeSlots extends Component {
                 {this.props.selectedShop.phone}
               </p>
             )}
+            <Button outline color="secondary" onClick={this.props.onNewChoices}>
+              Modifiez vos choix
+            </Button>
           </div>
         </div>
       </Container>

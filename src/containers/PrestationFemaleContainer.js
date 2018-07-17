@@ -16,7 +16,8 @@ const mapStateToProps = state => ({
     prestation => prestation.gender === "F"
   ),
   showCounter: showCounter(state),
-  maxCountFemale: getCountByGender(state, "F")
+  maxCountFemale: getCountByGender(state, "F"),
+  timeSlots: state.timeSlots
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -45,9 +46,20 @@ class FemaleSelected extends Component {
         <Zoom>
           <ListChoicePrestation
             {...this.props}
+            select={
+              this.props.timeSlots.length === 0 ? this.props.select : () => {}
+            }
             showCounter={this.props.showCounter}
-            handleMinus={this.props.handleMinus}
-            handlePlus={this.props.handlePlus(this.props.maxCountFemale)}
+            handleMinus={
+              this.props.timeSlots.length === 0
+                ? this.props.handleMinus
+                : () => {}
+            }
+            handlePlus={
+              this.props.timeSlots.length === 0
+                ? this.props.handlePlus(this.props.maxCountFemale)
+                : () => {}
+            }
           />
         </Zoom>
       </div>

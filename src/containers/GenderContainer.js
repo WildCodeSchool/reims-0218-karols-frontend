@@ -19,7 +19,8 @@ import { showCounter } from "../display"
 
 const mapStateToProps = state => ({
   genders: state.genders,
-  showCounter: showCounter(state)
+  showCounter: showCounter(state),
+  timeSlots: state.timeSlots
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -42,18 +43,33 @@ class GenderSelect extends Component {
         <GenderTitle />
         <Row className="justify-content-center">
           {this.props.genders.map(gender => (
-            <Col key={gender.sex}lg="4"
-            md="6"
-            sm="12"
-            className="text-center mb-3">
+            <Col
+              key={gender.sex}
+              lg="4"
+              md="6"
+              sm="12"
+              className="text-center mb-3"
+            >
               <Zoom>
                 <CardModelGender
                   id={gender.sex}
-                  select={this.props.select}
+                  select={
+                    this.props.timeSlots.length === 0
+                      ? this.props.select
+                      : () => {}
+                  }
                   {...gender}
                   showCounter={this.props.showCounter}
-                  handleMinus={this.props.handleMinus}
-                  handlePlus={this.props.handlePlus}
+                  handleMinus={
+                    this.props.timeSlots.length === 0
+                      ? this.props.handleMinus
+                      : () => {}
+                  }
+                  handlePlus={
+                    this.props.timeSlots.length === 0
+                      ? this.props.handlePlus
+                      : () => {}
+                  }
                 />
               </Zoom>
             </Col>
