@@ -77,6 +77,7 @@ class Page extends Component {
         <Element name="male">
           {this.props.showMalePrestation && <PrestationMaleContainer />}
         </Element>
+
         {this.props.showDatePicker && <DatePickerContainer />}
         {this.props.showCalendar && <CalendarContainer />}
         <ResumeContainer />
