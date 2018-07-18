@@ -11,13 +11,14 @@ const transformDay = date =>
     .setLocale("fr")
     .toFormat("cccc")
 
-const CalendarDay = ({ date }) => (
+const CalendarDay = ({ date, selected }) => (
   <div
     style={{
       textAlign: "center",
       marginBottom: "24px",
       fontSize: "13px",
-      color: "#435f71"
+      color: selected ? "#000" : "#435f71",
+      fontWeight: selected ? "bold" : "normal"
     }}
   >
     <p style={{ fontWeight: "700" }} />
