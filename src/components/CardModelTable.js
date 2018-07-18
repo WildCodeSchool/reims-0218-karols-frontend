@@ -45,11 +45,11 @@ const CardModelTable = ({
               ? `linear-gradient(
   rgba(255, 255, 255, 0.1), 
  rgba(255, 255, 255, 0.1)
- ), url(${image}) center/100% no-repeat`
+ ), url(${image}) center/105% no-repeat`
               : `linear-gradient(
  rgba(0, 0, 0, 0.5), 
  rgba(0, 0, 0, 0.5)
- ), url(${image}) center/100% no-repeat`
+ ), url(${image}) center/105% no-repeat`
           }}
         >
           <div
