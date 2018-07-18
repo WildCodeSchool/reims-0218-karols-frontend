@@ -39,8 +39,8 @@ const CardModelGender = ({
  rgba(255, 255, 255, 0)
  ), url(${image}) center/100% no-repeat`
               : `linear-gradient(
- rgba(0, 0, 0, 0.4), 
- rgba(0, 0, 0, 0.4)
+ rgba(0, 0, 0, 0.35), 
+ rgba(0, 0, 0, 0.35)
  ), url(${image}) center/100% no-repeat`
           }}
         >
