@@ -6,8 +6,8 @@ exports[`renders correctly 1`] = `
     style={
       Object {
         "fontSize": "40px",
-        "height": "150px",
-        "paddingTop": "80px",
+        "height": "100px",
+        "paddingTop": "40px",
       }
     }
   />

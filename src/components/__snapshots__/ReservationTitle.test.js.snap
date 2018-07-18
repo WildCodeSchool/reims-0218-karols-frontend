@@ -1,7 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<div>
+<div
+  style={
+    Object {
+      "paddingBottom": "35px",
+    }
+  }
+>
   <hr />
   <h2
     className="display-4"
