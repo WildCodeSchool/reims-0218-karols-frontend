@@ -7,7 +7,6 @@ import {
   makeIncrementPrestation
 } from "../actions/actions"
 import { scroller } from "react-scroll"
-import Zoom from "react-reveal/Zoom"
 import { showCounter } from "../display"
 import { getCountByGender } from "../resume/index"
 
