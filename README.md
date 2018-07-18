@@ -1,67 +1,66 @@
-# <h1> Projet KAROLS </h1>
+<img src= "https://image.noelshack.com/fichiers/2018/27/3/1530690032-logo-noirt.png">
+<h1> Project KAROLS </h1>
 
-# -
+Create an application that will book benefits type makeup, hairstyle ect, for men and women.
+Possibility also to reserve a table for a party or to reserve a table and different services for several people.
 
--
-Créez une application de reservation esthétique qui à comme particularité le fait de se restaurer apres ou avant d'etre pris en charge.
+To offer a beauty service while enjoying a drink is now possible
 
-S'offrir un service beauté tout en buvant une boisson est maintenant possible
-
-==
+<hr>
 
 ## <h2> Client </h2>
 
 Carole Alfonsi / Mattéo Boso
 
-==
+<hr>
 
-## <h2> Conditions préalables </h2>
+## <h2> Pre-requisites </h2>
 
-Vous avez besoin d'installer Node.js sur votre ordinateur.
+You need Node.js installed on your computer.
 
-Installez Homebrew si vous êtes sur un Mac, c'est un gestionnaire de paquets pour mac.
+If you’re on a Mac, installing Homebrew, a package manager for mac.
 
-Après avoir installé ceci, vous pouvez installer Node.js en faisant: brew install node
+After installing this, you can install Node.js by doing: brew install node
 
-==
+<hr>
 
-<h2> Commencer </h2>
+<h2> Getting Started </h2>
 
-Dans votre terminal:
+In your terminal:
 
-1.  Accédez au dossier dans lequel vous ajoutez le référentiel: cd <folderName>
+- Go to the folder where you add the repository : cd <code> folderName</code>
 
-2.  Cloner le dépôt: git@github.com:WildCodeSchool/reims-0218-karols-frontend.git
+- Clone the repositorie : WildCodeSchool/reims-0218-karols-frontend.git
 
-3.  Aller aux nouveaux dossiers créer: cd reims-0218-karols-frontend
+- Go to the new folders create : cd reims-0218-karols-frontend
 
-4.  Installe un package et tous les packages dont il dépend: npm install
+- Installs a package, and any packages that it depends on : `npm install`
 
-5.  Ajoutez-vous et validez pour enregistrer les modifications dans le référentiel: git add <fileName>ou git add -A et git commit -m '<commitName>'
+- Add you frist add and commit for save changes to the repository : git add <code> fileName </code> or git add -A and git commit -m <code> commitName</code>
 
-6.  Pour ajouter et modifier le code, créez une nouvelle branche: git checkout -b <branchName>
+- For add and modify th code create a new branch: git checkout -b <code>branchName</code>
 
-7.  Exécute l'application en mode de développement: npm start or yarn start Ouvrez http: // localhost: 3000 pour l'afficher dans le navigateur. La page sera automatiquement rechargée si vous apportez des modifications au code. Vous verrez les erreurs de construction et les avertissements de fibre dans la console.
+- Runs the app in development mode : `npm start or yarn start` Open http://localhost:3000 to view it in the browser. The page will automatically reload if you make changes to the code. You will see the build errors and lint warnings in the console.
 
-8.  Pour mettre à jour les références distantes avec les objets associés: git push origin <branchName>
+- For update remote refs along with associated objects : git push origin <code>branchName</code>
 
-9.  Pour avoir l'entiereté de l'application (coté serveur) il faut sur GitHub suivre le README: WildCodeSchool/reims-0218-karols-api
+- To have all the content of the application (server side) you have to go to GitHub, follow the README : <a href="https://github.com/WildCodeSchool/reims-0218-karols-api">WildCodeSchool/reims-0218-karols-api</a>
 
-==
+<hr>
 
-<h2> Membres </h2>
+<h2> Members </h2>
 
-.Anahita Vahdani: https://github.com/Erenude
-.Max Gallois: https://github.com/GalloisMax
-.Dorian Massot: https://github.com/Cynnah
-.Tanguy Marlot: https://github.com/artshow
-.Arnaud Gadroy: https://github.com/raspnotification
+.Anahita Vahdani : <a href="https://github.com/Erenude">@Anahita-GitHub</a> <br>
+.Max Gallois : <a href="https://github.com/GalloisMax">@Max-GitHub</a> <br>
+.Dorian Massot : <a href="https://github.com/Cynnah">@Dorian-GitHub</a> <br>
+.Tanguy Marlot : <a href="https://github.com/artshow">@Tanguy-GitHub</a> <br>
+.Arnaud Gadroy : <a href="https://github.com/raspnotification">@Arnaud-GitHub</a> <br>
 
-<h2> Remerciements </h2>
+<h2> Acknowledgments </h2>
 
-.Thomas Culdaut
-.Culdaut Thomas
-.Notre formateur
+.Thomas Culdaut<br>
+.Clément Béchetoille<br>
+.Wild Code School
 
 <!-- This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
