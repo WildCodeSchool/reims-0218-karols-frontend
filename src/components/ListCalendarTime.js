@@ -10,7 +10,7 @@ const ListCalendarTime = ({ timeSlots, selectTimeSlot }) => (
   <div
     style={{
       display: "block",
-      paddingRight: "11px"
+      paddingRight: "09px"
     }}
   >
     {timeSlots.map((timeSlot, index) => (
