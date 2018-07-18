@@ -43,25 +43,23 @@ class FemaleSelected extends Component {
   render() {
     return (
       <div>
-        <Zoom>
-          <ListChoicePrestation
-            {...this.props}
-            select={
-              this.props.timeSlots.length === 0 ? this.props.select : () => {}
-            }
-            showCounter={this.props.showCounter}
-            handleMinus={
-              this.props.timeSlots.length === 0
-                ? this.props.handleMinus
-                : () => {}
-            }
-            handlePlus={
-              this.props.timeSlots.length === 0
-                ? this.props.handlePlus(this.props.maxCountFemale)
-                : () => {}
-            }
-          />
-        </Zoom>
+        <ListChoicePrestation
+          {...this.props}
+          select={
+            this.props.timeSlots.length === 0 ? this.props.select : () => {}
+          }
+          showCounter={this.props.showCounter}
+          handleMinus={
+            this.props.timeSlots.length === 0
+              ? this.props.handleMinus
+              : () => {}
+          }
+          handlePlus={
+            this.props.timeSlots.length === 0
+              ? this.props.handlePlus(this.props.maxCountFemale)
+              : () => {}
+          }
+        />
       </div>
     )
   }
