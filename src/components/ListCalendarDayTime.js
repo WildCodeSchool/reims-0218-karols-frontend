@@ -6,11 +6,9 @@ import { Scrollbars } from "react-custom-scrollbars"
 const ListCalendarDayTime = ({ day, selectTimeSlot }) => (
   <div
     style={{
-      flexGrow: "1",
-      flexShrink: "0",
-      flexBasis: "0px",
       margin: "0 6px",
-      maxWidth: "75px"
+      maxWidth: "75px",
+      width: "20%"
     }}
   >
     <CalendarDay date={day.date} />

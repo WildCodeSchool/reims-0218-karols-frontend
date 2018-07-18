@@ -17,10 +17,10 @@ const CalendarDay = ({ date }) => (
       textAlign: "center",
       marginBottom: "24px",
       fontSize: "13px",
-      color: "#435f71"
+      color: "#435f71",
+      minHeight: "60px"
     }}
   >
-    <p style={{ fontWeight: "700" }} />
     <p
       style={{
         textAlign: "center",
