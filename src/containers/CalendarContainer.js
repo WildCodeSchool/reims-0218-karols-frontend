@@ -78,7 +78,6 @@ class TimeSlots extends Component {
   render() {
     return (
       <Container>
-        {console.log(this.props.timeSlots.slice(1, 4))}
         <Media query="(max-width: 575.98px)">
           {matches =>
             matches ? (
