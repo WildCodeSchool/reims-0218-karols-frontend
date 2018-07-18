@@ -1,10 +1,67 @@
-## <h1> Projet KAROLS </h1>
+# <h1> Projet KAROLS </h1>
 
-## ==
+# -
 
+-
 Créez une application de reservation esthétique qui à comme particularité le fait de se restaurer apres ou avant d'etre pris en charge.
 
 S'offrir un service beauté tout en buvant une boisson est maintenant possible
+
+==
+
+## <h2> Client </h2>
+
+Carole Alfonsi / Mattéo Boso
+
+==
+
+## <h2> Conditions préalables </h2>
+
+Vous avez besoin d'installer Node.js sur votre ordinateur.
+
+Installez Homebrew si vous êtes sur un Mac, c'est un gestionnaire de paquets pour mac.
+
+Après avoir installé ceci, vous pouvez installer Node.js en faisant: brew install node
+
+==
+
+<h2> Commencer </h2>
+
+Dans votre terminal:
+
+1.  Accédez au dossier dans lequel vous ajoutez le référentiel: cd <folderName>
+
+2.  Cloner le dépôt: git@github.com:WildCodeSchool/reims-0218-karols-frontend.git
+
+3.  Aller aux nouveaux dossiers créer: cd reims-0218-karols-frontend
+
+4.  Installe un package et tous les packages dont il dépend: npm install
+
+5.  Ajoutez-vous et validez pour enregistrer les modifications dans le référentiel: git add <fileName>ou git add -A et git commit -m '<commitName>'
+
+6.  Pour ajouter et modifier le code, créez une nouvelle branche: git checkout -b <branchName>
+
+7.  Exécute l'application en mode de développement: npm start or yarn start Ouvrez http: // localhost: 3000 pour l'afficher dans le navigateur. La page sera automatiquement rechargée si vous apportez des modifications au code. Vous verrez les erreurs de construction et les avertissements de fibre dans la console.
+
+8.  Pour mettre à jour les références distantes avec les objets associés: git push origin <branchName>
+
+9.  Pour avoir l'entiereté de l'application (coté serveur) il faut sur GitHub suivre le README: WildCodeSchool/reims-0218-karols-api
+
+==
+
+<h2> Membres </h2>
+
+.Anahita Vahdani: https://github.com/Erenude
+.Max Gallois: https://github.com/GalloisMax
+.Dorian Massot: https://github.com/Cynnah
+.Tanguy Marlot: https://github.com/artshow
+.Arnaud Gadroy: https://github.com/raspnotification
+
+<h2> Remerciements </h2>
+
+.Thomas Culdaut
+.Culdaut Thomas
+.Notre formateur
 
 <!-- This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
