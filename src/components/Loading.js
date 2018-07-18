@@ -10,7 +10,7 @@ const Loading = ({ type, color }) => (
       top: "0",
       right: "0",
       backgroundColor: "grey",
-      opacity: "0.5",
+      opacity: "0.8",
       position: "fixed",
       zIndex: "2000"
     }}

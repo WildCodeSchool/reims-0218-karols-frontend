@@ -17,8 +17,8 @@ const PreparationChoice = ({
   <div>
     <h5
       style={{
-        height: "150px",
-        paddingTop: "80px",
+        height: "100px",
+        paddingTop: "40px",
         fontSize: "40px"
       }}
     >

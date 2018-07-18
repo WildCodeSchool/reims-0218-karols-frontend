@@ -41,7 +41,7 @@ class ShowResume extends Component {
 
         {reservationData.shop && (
           <p className="shop">
-            Votre réservation se fera à KAROLS {reservationData.shop.city}
+            Vous avez reservé à {reservationData.shop.city}
           </p>
         )}
         {(reservationData.service && reservationData.service.id) === 1 && (
