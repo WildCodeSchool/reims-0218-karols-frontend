@@ -11,6 +11,7 @@ const ListChoicePrestation = ({
 }) => (
   <div>
     <PrestationTitle />
+
     {prestations.map(prestation => (
       <ChoicePrestation
         key={prestation.id}

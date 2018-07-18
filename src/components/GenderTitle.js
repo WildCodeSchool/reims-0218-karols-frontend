@@ -2,7 +2,11 @@ import React from "react"
 
 const GenderTitle = () => {
   return (
-    <div>
+    <div
+      style={{
+        paddingBottom: "35px"
+      }}
+    >
       <hr />
       <h2 className="display-4">Vous êtes :</h2>
     </div>
