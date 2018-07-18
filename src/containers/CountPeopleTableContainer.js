@@ -17,7 +17,8 @@ import { showCounter } from "../display"
 const mapStateToProps = state => ({
   showCounter: showCounter(state),
   count: state.countPeopleTable.count,
-  image: state.countPeopleTable.image
+  image: state.countPeopleTable.image,
+  timeSlots: state.timeSlots
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -46,8 +47,16 @@ class Table extends Component {
                 }}
                 image={this.props.image}
                 count={this.props.count}
-                handleMinus={this.props.handleMinus}
-                handlePlus={this.props.handlePlus}
+                handleMinus={
+                  this.props.timeSlots.length === 0
+                    ? this.props.handleMinus
+                    : () => {}
+                }
+                handlePlus={
+                  this.props.timeSlots.length === 0
+                    ? this.props.handlePlus
+                    : () => {}
+                }
                 select={true}
                 showCounter={this.props.showCounter}
               />

@@ -7,7 +7,8 @@ import ShopTitle from "../components/ShopTitle"
 import { makeChooseShop } from "../actions/actions"
 
 const mapStateToProps = state => ({
-  shops: state.shops
+  shops: state.shops,
+  timeSlots: state.timeSlots
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -34,7 +35,11 @@ class ShopSelect extends Component {
                 title={shop.city}
                 image={shop.image}
                 {...shop}
-                select={this.props.select}
+                select={
+                  this.props.timeSlots.length === 0
+                    ? this.props.select
+                    : () => {}
+                }
               />
             </Col>
           ))}

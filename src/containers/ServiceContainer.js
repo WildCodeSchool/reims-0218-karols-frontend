@@ -9,7 +9,8 @@ import ReservationTitle from "../components/ReservationTitle"
 import { makeChooseService } from "../actions/actions"
 
 const mapStateToProps = state => ({
-  services: state.services
+  services: state.services,
+  timeSlots: state.timeSlots
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -41,7 +42,11 @@ class ServiceSelect extends Component {
                 <CardModel
                   title={service.name}
                   {...service}
-                  select={this.props.select}
+                  select={
+                    this.props.timeSlots.length === 0
+                      ? this.props.select
+                      : () => {}
+                  }
                 />
               </Zoom>
             </Col>

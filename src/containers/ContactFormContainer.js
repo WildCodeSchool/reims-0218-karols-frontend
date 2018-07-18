@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Field, reduxForm } from "redux-form"
+import { Field, reduxForm, initialize } from "redux-form"
 import Recaptcha from "react-grecaptcha"
 import { connect } from "react-redux"
 import { Button, Alert } from "reactstrap"
@@ -76,7 +76,8 @@ const mapDispatchToProps = dispatch => ({
   onLoading: loading => dispatch(requestLoading(loading)),
   success: () => {
     dispatch(makeSuccessReservation())
-  }
+  },
+  initForm: action => dispatch(action)
 })
 
 const mapStateToProps = state => ({
@@ -92,7 +93,8 @@ class ContactForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      validCaptcha: false
+      validCaptcha: false,
+      data: {}
     }
     this.verifyCallback = this.verifyCallback.bind(this)
   }
@@ -209,6 +211,10 @@ class ContactForm extends Component {
               contact: this.props.selectedForm,
               ...this.props.reservationData
             }).then(data => {
+              localStorage.setItem(
+                "datas",
+                JSON.stringify(this.props.selectedForm)
+              )
               this.props.success()
             })
           }}
@@ -234,6 +240,14 @@ class ContactForm extends Component {
         )}
       </form>
     )
+  }
+
+  componentDidMount() {
+    const data = localStorage.getItem("datas")
+    if (data) {
+      const initializeFormLocalStorage = initialize("contact", JSON.parse(data))
+      this.props.initForm(initializeFormLocalStorage)
+    }
   }
 }
 
