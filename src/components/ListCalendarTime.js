@@ -9,8 +9,7 @@ import CalendarTime from "./CalendarTime"
 const ListCalendarTime = ({ timeSlots, selectTimeSlot }) => (
   <div
     style={{
-      display: "block",
-      paddingRight: "11px"
+      display: "block"
     }}
   >
     {timeSlots.map((timeSlot, index) => (
