@@ -15,9 +15,9 @@ exports[`renders correctly 1`] = `
       style={
         Object {
           "background": "linear-gradient(
-         rgba(0, 0, 0, 0.4), 
-         rgba(0, 0, 0, 0.4)
-         ), url(undefined) center/100% no-repeat",
+         rgba(0, 0, 0, 0.35), 
+         rgba(0, 0, 0, 0.35)
+         ), url(undefined) center/105% no-repeat",
           "boxShadow": "0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.2)",
           "minHeight": "300px",
           "overflow": "hidden",
