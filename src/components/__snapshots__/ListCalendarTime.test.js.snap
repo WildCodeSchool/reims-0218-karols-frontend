@@ -5,6 +5,7 @@ exports[`renders correctly 1`] = `
   style={
     Object {
       "display": "block",
+      "paddingRight": "11px",
     }
   }
 >

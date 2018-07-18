@@ -9,6 +9,8 @@ export const getSelectedForm = state =>
 export const getFormErrors = state =>
   state.form.contact ? state.form.contact.syncErrors : undefined
 
+export const getSuccessReservation = state => state.reservation.success
+
 export const getSelectedGender = state =>
   state.genders.find(gender => gender.selected)
 
@@ -80,3 +82,11 @@ export const getCountTable = state => state.countPeopleTable.count
 export const getCountGender = state => state.genders
 
 export const getCountPreparation = state => state.prestations
+
+export const getCountByPrestation = (prestationId, prevState) =>
+  prevState
+    .find(prestation => prestationId === prestation.id)
+    .preparations.reduce((acc, preparation) => acc + preparation.count, 0)
+
+export const getCountByGender = (state, sex) =>
+  state.genders.find(gender => gender.sex === sex).count

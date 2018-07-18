@@ -148,9 +148,10 @@ describe("action to increment prestation", () => {
     const expected = {
       type: INCREMENT_PRESTATION,
       preparationId: 4,
-      prestationId: 2
+      prestationId: 2,
+      max: 2
     }
-    expect(makeIncrementPrestation(2, 4)).toEqual(expected)
+    expect(makeIncrementPrestation(2, 4, 2)).toEqual(expected)
   })
 })
 

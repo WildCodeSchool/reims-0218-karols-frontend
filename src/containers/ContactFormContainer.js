@@ -5,8 +5,15 @@ import { connect } from "react-redux"
 import { Button, Alert } from "reactstrap"
 
 import { fetchCreateReservation } from "../api/fetchCreateReservation"
-import { makeSuccessReservation } from "../actions/actions"
-import { getSelectedForm, getReservationData, getFormErrors } from "../resume"
+import {
+  getSelectedForm,
+  getReservationData,
+  getFormErrors,
+  getSuccessReservation
+} from "../resume"
+import { makeSuccessReservation, requestLoading } from "../actions/actions"
+import { showButtonRefresh } from "../display"
+import ButtonRefresh from "../components/ButtonRefresh"
 
 const validate = values => {
   const errors = {}
@@ -23,7 +30,7 @@ const validate = values => {
   }
   if (!values.phone) {
     errors.phone = "Champ requis"
-  } else if (!/^(0|[1-9][0-9]{9})$/i.test(values.phone)) {
+  } else if (!/^(0|[0-9][0-9]{9})$/i.test(values.phone)) {
     errors.phone = "Veuillez renter un numéro de téléphone à 10 chiffres"
   }
   return errors
@@ -66,6 +73,7 @@ const renderField = ({ label, input, meta: { touched, error } }) => (
 )
 
 const mapDispatchToProps = dispatch => ({
+  onLoading: loading => dispatch(requestLoading(loading)),
   success: () => {
     dispatch(makeSuccessReservation())
   },
@@ -76,6 +84,8 @@ const mapStateToProps = state => ({
   selectedForm: getSelectedForm(state),
   reservationData: getReservationData(state),
   formErrors: getFormErrors(state),
+  successReservation: getSuccessReservation(state),
+  buttonRefresh: showButtonRefresh(state),
   showAlert: state.reservation.success
 })
 
@@ -175,7 +185,7 @@ class ContactForm extends Component {
           />
         </div>
         <Recaptcha
-          sitekey={"6LenQWAUAAAAAPa99VtqSlKXvI_uNBqZA5XyD-hQ"}
+          sitekey={process.env.REACT_APP_SITE_KEY}
           callback={this.verifyCallback}
           expiredCallback={() => console.log("expiredcaptcha")}
           locale="fr-FR"
@@ -189,11 +199,16 @@ class ContactForm extends Component {
           }}
         />
         <Button
-          disabled={!this.state.validCaptcha || this.props.formErrors}
+          disabled={
+            !this.state.validCaptcha ||
+            this.props.formErrors ||
+            this.props.successReservation
+          }
           outline
           color="secondary"
           onClick={() => {
             return fetchCreateReservation({
+              loading: this.props.onLoading(true),
               contact: this.props.selectedForm,
               ...this.props.reservationData
             }).then(data => {
@@ -207,6 +222,13 @@ class ContactForm extends Component {
         >
           Valider
         </Button>{" "}
+        <div
+          style={{
+            marginTop: "30px"
+          }}
+        >
+          {this.props.buttonRefresh && <ButtonRefresh />}
+        </div>
         {this.props.showAlert && (
           <Alert
             style={{

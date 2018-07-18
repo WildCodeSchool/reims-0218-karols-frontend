@@ -5,6 +5,7 @@ export const CHOOSE_SHOP = "CHOOSE_SHOP"
 export const CHOOSE_TIMESLOT = "CHOOSE_TIMESLOT"
 export const SHOPS_PRESTATIONS_RECEIVED = "SHOPS_PRESTATIONS_RECEIVED"
 export const TIMESLOTS_RECEIVED = "TIMESLOTS_RECEIVED"
+export const EMPTY_TIMESLOTS = "EMPTY_TIMESLOTS"
 export const SUCCESS_RESERVATION = "SUCCESS_RESERVATION"
 export const CHOOSE_COUNT_PEOPLE = "CHOOSE_COUNT_PEOPLE"
 export const INCREMENT_SEX = "INCREMENT_SEX"
@@ -55,6 +56,10 @@ export const makeTimeslotsReceived = response => ({
   response
 })
 
+export const makeEmptyTimeslots = () => ({
+  type: EMPTY_TIMESLOTS
+})
+
 export const makeChooseCountPeopleTable = count => ({
   type: CHOOSE_COUNT_PEOPLE,
   count
@@ -70,10 +75,11 @@ export const makeDecrementSex = sex => ({
   sex
 })
 
-export const makeIncrementPrestation = (prestationId, preparationId) => ({
+export const makeIncrementPrestation = (prestationId, preparationId, max) => ({
   type: INCREMENT_PRESTATION,
   prestationId,
-  preparationId
+  preparationId,
+  max
 })
 
 export const makeDecrementPrestation = (prestationId, preparationId) => ({

@@ -1,5 +1,5 @@
 export const fetchCreateReservation = data =>
-  fetch("http://localhost:8000/reservations", {
+  fetch(`http://${process.env.REACT_APP_SERVER_URL}/reservations`, {
     method: "POST",
     headers: {
       Accept: "application/json",

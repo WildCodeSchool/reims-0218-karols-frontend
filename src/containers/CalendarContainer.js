@@ -7,7 +7,9 @@ import { fetchDateSelected } from "../api/fetchDateSelected"
 import { Button } from "reactstrap"
 import {
   makeTimeslotsReceived,
-  makeChooseSlotReservation
+  makeChooseSlotReservation,
+  requestLoading,
+  makeEmptyTimeslots
 } from "../actions/actions"
 import { getSelectedShop, getReservationData } from "../resume"
 
@@ -22,7 +24,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onTimeSlotsReceived: response => dispatch(makeTimeslotsReceived(response)),
-  onTimeSlotSelected: timeSlot => dispatch(makeChooseSlotReservation(timeSlot))
+  onLoading: loading => dispatch(requestLoading(loading)),
+  onTimeSlotSelected: timeSlot => dispatch(makeChooseSlotReservation(timeSlot)),
+  onNewChoices: () => dispatch(makeEmptyTimeslots())
 })
 
 class TimeSlots extends Component {
@@ -38,6 +42,7 @@ class TimeSlots extends Component {
         const dateMinusOne = DateTime.fromISO(timeSlot.date)
           .plus({ days: -1 })
           .toISODate()
+        this.props.onLoading(true)
         fetchDateSelected(dateMinusOne, this.props.reservationData).then(
           response => {
             this.props.onTimeSlotsReceived(response)
@@ -53,6 +58,7 @@ class TimeSlots extends Component {
         const datePlusOne = DateTime.fromISO(timeSlot.date)
           .plus({ days: +1 })
           .toISODate()
+        this.props.onLoading(true)
         fetchDateSelected(datePlusOne, this.props.reservationData).then(
           response => {
             this.props.onTimeSlotsReceived(response)
@@ -84,6 +90,9 @@ class TimeSlots extends Component {
                 {this.props.selectedShop.phone}
               </p>
             )}
+            <Button outline color="secondary" onClick={this.props.onNewChoices}>
+              Modifiez vos choix
+            </Button>
           </div>
         </div>
       </Container>
