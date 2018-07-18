@@ -9,7 +9,7 @@ import {
 import { scroller } from "react-scroll"
 import Zoom from "react-reveal/Zoom"
 import { showCounter } from "../display"
-import { getCountByGender } from "../resume/index"
+import { getCountByGender, getSelectedService } from "../resume/index"
 
 const mapStateToProps = state => ({
   prestations: state.prestations.filter(
@@ -17,7 +17,8 @@ const mapStateToProps = state => ({
   ),
   showCounter: showCounter(state),
   maxCountFemale: getCountByGender(state, "F"),
-  timeSlots: state.timeSlots
+  timeSlots: state.timeSlots,
+  selectedService: getSelectedService(state)
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -34,12 +35,15 @@ const mapDispatchToProps = dispatch => ({
 
 class FemaleSelected extends Component {
   componentDidMount() {
-    scroller.scrollTo("female", {
-      duration: 1500,
-      delay: 100,
-      smooth: true
-    })
+    if (this.props.selectedService && this.props.selectedService.id !== 3) {
+      scroller.scrollTo("female", {
+        duration: 1500,
+        delay: 100,
+        smooth: true
+      })
+    }
   }
+
   render() {
     return (
       <div>
