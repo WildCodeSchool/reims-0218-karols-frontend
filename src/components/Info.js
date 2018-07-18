@@ -25,20 +25,16 @@ class Info extends React.Component {
           style={{
             width: "100px",
             height: "30px",
-            opacity: "0.5"
+            opacity: "0.8"
           }}
-          color="grey"
+          color="secondary"
           onClick={this.toggle}
         >
           <p
             style={{
               position: "relative",
-              top: "50%",
-              WebkitTransform: "translateY(-20%)",
-              MozTransform: "translateY(-20%)",
-              msTransform: "translateY(-20%)",
-              OTransform: "translateY(-20%)",
-              transform: "translateY(-20%)"
+              transform: "translateY(-25%)",
+              fontStyle: "bold"
             }}
           >
             Description
