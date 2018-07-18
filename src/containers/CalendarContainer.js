@@ -2,6 +2,8 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import { Container } from "reactstrap"
 
+import Media from "react-media"
+
 import { fetchDateSelected } from "../api/fetchDateSelected"
 
 import { Button } from "reactstrap"
@@ -76,12 +78,27 @@ class TimeSlots extends Component {
   render() {
     return (
       <Container>
-        <ResultCalendar
-          handleMinusClick={this.handleMinusClick}
-          weekTimeSlots={this.props.timeSlots}
-          handlePlusClick={this.handlePlusClick}
-          selectTimeSlot={this.props.onTimeSlotSelected}
-        />
+        {console.log(this.props.timeSlots.slice(1, 4))}
+        <Media query="(max-width: 575.98px)">
+          {matches =>
+            matches ? (
+              <ResultCalendar
+                handleMinusClick={this.handleMinusClick}
+                weekTimeSlots={this.props.timeSlots.slice(0, 3)}
+                handlePlusClick={this.handlePlusClick}
+                selectTimeSlot={this.props.onTimeSlotSelected}
+              />
+            ) : (
+              <ResultCalendar
+                handleMinusClick={this.handleMinusClick}
+                weekTimeSlots={this.props.timeSlots}
+                handlePlusClick={this.handlePlusClick}
+                selectTimeSlot={this.props.onTimeSlotSelected}
+              />
+            )
+          }
+        </Media>
+
         <div className="availabilities-more-button mt-3">
           <div className="phone mt-3">
             {this.props.selectedShop && (
