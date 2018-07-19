@@ -18,7 +18,7 @@ const mapStateToProps = state => ({
   showCounter: showCounter(state),
   count: state.countPeopleTable.count,
   image: state.countPeopleTable.image,
-  timeSlots: state.timeSlots
+  bookingDone: state.reservation.success
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -48,14 +48,10 @@ class Table extends Component {
                 image={this.props.image}
                 count={this.props.count}
                 handleMinus={
-                  this.props.timeSlots.length === 0
-                    ? this.props.handleMinus
-                    : () => {}
+                  !this.props.bookingDone ? this.props.handleMinus : () => {}
                 }
                 handlePlus={
-                  this.props.timeSlots.length === 0
-                    ? this.props.handlePlus
-                    : () => {}
+                  !this.props.bookingDone ? this.props.handlePlus : () => {}
                 }
                 select={true}
                 showCounter={this.props.showCounter}

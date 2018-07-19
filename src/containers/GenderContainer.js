@@ -20,7 +20,7 @@ import { showCounter } from "../display"
 const mapStateToProps = state => ({
   genders: state.genders,
   showCounter: showCounter(state),
-  timeSlots: state.timeSlots
+  bookingDone: state.reservation.success
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -54,21 +54,15 @@ class GenderSelect extends Component {
                 <CardModelGender
                   id={gender.sex}
                   select={
-                    this.props.timeSlots.length === 0
-                      ? this.props.select
-                      : () => {}
+                    !this.props.bookingDone ? this.props.select : () => {}
                   }
                   {...gender}
                   showCounter={this.props.showCounter}
                   handleMinus={
-                    this.props.timeSlots.length === 0
-                      ? this.props.handleMinus
-                      : () => {}
+                    !this.props.bookingDone ? this.props.handleMinus : () => {}
                   }
                   handlePlus={
-                    this.props.timeSlots.length === 0
-                      ? this.props.handlePlus
-                      : () => {}
+                    !this.props.bookingDone ? this.props.handlePlus : () => {}
                   }
                 />
               </Zoom>
