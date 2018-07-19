@@ -106,9 +106,6 @@ class TimeSlots extends Component {
                 {this.props.selectedShop.phone}
               </p>
             )}
-            <Button outline color="secondary" onClick={this.props.onNewChoices}>
-              Modifiez vos choix
-            </Button>
           </div>
         </div>
       </Container>
