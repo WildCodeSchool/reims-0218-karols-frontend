@@ -16,7 +16,7 @@ const mapStateToProps = state => ({
   ),
   showCounter: showCounter(state),
   maxCountFemale: getCountByGender(state, "F"),
-  timeSlots: state.timeSlots,
+  bookingDone: state.reservation.success,
   selectedService: getSelectedService(state)
 })
 
@@ -48,17 +48,13 @@ class FemaleSelected extends Component {
       <div>
         <ListChoicePrestation
           {...this.props}
-          select={
-            this.props.timeSlots.length === 0 ? this.props.select : () => {}
-          }
+          select={!this.props.bookingDone ? this.props.select : () => {}}
           showCounter={this.props.showCounter}
           handleMinus={
-            this.props.timeSlots.length === 0
-              ? this.props.handleMinus
-              : () => {}
+            !this.props.bookingDone ? this.props.handleMinus : () => {}
           }
           handlePlus={
-            this.props.timeSlots.length === 0
+            !this.props.bookingDone
               ? this.props.handlePlus(this.props.maxCountFemale)
               : () => {}
           }

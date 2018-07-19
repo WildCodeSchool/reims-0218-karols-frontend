@@ -10,7 +10,7 @@ import { makeChooseService } from "../actions/actions"
 
 const mapStateToProps = state => ({
   services: state.services,
-  timeSlots: state.timeSlots
+  bookingDone: state.reservation.success
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -43,9 +43,7 @@ class ServiceSelect extends Component {
                   title={service.name}
                   {...service}
                   select={
-                    this.props.timeSlots.length === 0
-                      ? this.props.select
-                      : () => {}
+                    !this.props.bookingDone ? this.props.select : () => {}
                   }
                 />
               </Zoom>
