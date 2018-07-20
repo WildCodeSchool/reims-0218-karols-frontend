@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { DateTime } from "luxon"
 import { connect } from "react-redux"
 import { Jumbotron } from "reactstrap"
-
+import { scroller } from "react-scroll"
 import { makeSuccessReservation } from "../actions/actions"
 import { getReservationData } from "../resume"
 
@@ -23,6 +23,13 @@ const transformTimeSlot = timeSlot =>
     .toFormat("'à' HH 'h' mm 'le' cccc dd LLLL ")
 
 class ShowResume extends Component {
+  componentDidMount() {
+    scroller.scrollTo("form", {
+      duration: 1500,
+      delay: 100,
+      smooth: true
+    })
+  }
   render() {
     const reservationData = this.props.reservationData
     return (
