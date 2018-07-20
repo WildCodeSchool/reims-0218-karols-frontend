@@ -103,7 +103,7 @@ const CardModel = ({
             </CardBody>
             <CardFooter
               style={{
-                backgroundColor: "rgba(136,136,136, 0.5)",
+                backgroundColor: "rgba(136,136,136, 0.4)",
                 maxHeight: "140px",
                 minHeight: "100px"
               }}
