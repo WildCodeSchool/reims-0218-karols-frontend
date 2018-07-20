@@ -112,6 +112,7 @@ const CardModel = ({
                 className="text"
                 style={{
                   color: "#fff",
+                  fontSize: "20px",
                   WebkitTransform: "translateY(calc(0px + 1em))",
                   transform: "translateY(calc(0px + 1em))"
                 }}
