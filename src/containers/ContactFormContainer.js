@@ -3,6 +3,7 @@ import { Field, reduxForm, initialize } from "redux-form"
 import Recaptcha from "react-grecaptcha"
 import { connect } from "react-redux"
 import { Button, Alert } from "reactstrap"
+import Zoom from "react-reveal/Zoom"
 
 import { fetchCreateReservation } from "../api/fetchCreateReservation"
 import {
@@ -108,138 +109,140 @@ class ContactForm extends Component {
   render() {
     const { handleSubmit } = this.props
     return (
-      <form
-        onSubmit={handleSubmit}
-        style={{
-          margin: "10px auto",
-          padding: "16px",
-          background: "#F7F7F7",
-          fontSize: "22px",
-          borderRadius: "60px",
-          textAlign: "center",
-          border: "2px solid grey"
-        }}
-        className="justify-content-center"
-      >
-        <h2
+      <Zoom>
+        <form
+          onSubmit={handleSubmit}
           style={{
-            background: "#f2f2f2",
-            color: "#26292D",
-            fontSize: "30px",
-            fontWeight: "100",
-            padding: "20px",
-            borderRadius: "10px",
-            border: "1px solid #797979",
-            margin: "30px"
+            margin: "10px auto",
+            padding: "16px",
+            background: "#F7F7F7",
+            fontSize: "22px",
+            borderRadius: "60px",
+            textAlign: "center",
+            border: "2px solid grey"
           }}
+          className="justify-content-center"
         >
-          {" "}
-          Formulaire de réservation{" "}
-        </h2>
-        <div
-          style={{
-            marginTop: "20px"
-          }}
-        >
-          <Field
-            name="firstName"
-            type="text"
-            component={renderField}
-            label="Prénom"
+          <h2
+            style={{
+              background: "#f2f2f2",
+              color: "#26292D",
+              fontSize: "30px",
+              fontWeight: "100",
+              padding: "20px",
+              borderRadius: "10px",
+              border: "1px solid #797979",
+              margin: "30px"
+            }}
+          >
+            {" "}
+            Formulaire de réservation{" "}
+          </h2>
+          <div
+            style={{
+              marginTop: "20px"
+            }}
+          >
+            <Field
+              name="firstName"
+              type="text"
+              component={renderField}
+              label="Prénom"
+            />
+          </div>
+          <div
+            style={{
+              marginTop: "20px"
+            }}
+          >
+            <Field
+              name="lastName"
+              type="text"
+              component={renderField}
+              label="Nom"
+            />
+          </div>
+          <div
+            style={{
+              marginTop: "20px"
+            }}
+          >
+            <Field
+              name="email"
+              type="email"
+              component={renderField}
+              label="Email"
+            />
+          </div>
+          <div
+            style={{
+              marginTop: "20px"
+            }}
+          >
+            <Field
+              name="phone"
+              type="number"
+              component={renderField}
+              label="Téléphone"
+            />
+          </div>
+          <Recaptcha
+            sitekey={process.env.REACT_APP_SITE_KEY}
+            callback={this.verifyCallback}
+            expiredCallback={() => console.log("expiredcaptcha")}
+            locale="fr-FR"
+            className="customClassName"
+            data-theme="grey"
+            style={{
+              display: "table",
+              margin: "0 auto",
+              paddingBottom: "30px",
+              marginTop: "30px"
+            }}
           />
-        </div>
-        <div
-          style={{
-            marginTop: "20px"
-          }}
-        >
-          <Field
-            name="lastName"
-            type="text"
-            component={renderField}
-            label="Nom"
-          />
-        </div>
-        <div
-          style={{
-            marginTop: "20px"
-          }}
-        >
-          <Field
-            name="email"
-            type="email"
-            component={renderField}
-            label="Email"
-          />
-        </div>
-        <div
-          style={{
-            marginTop: "20px"
-          }}
-        >
-          <Field
-            name="phone"
-            type="number"
-            component={renderField}
-            label="Téléphone"
-          />
-        </div>
-        <Recaptcha
-          sitekey={process.env.REACT_APP_SITE_KEY}
-          callback={this.verifyCallback}
-          expiredCallback={() => console.log("expiredcaptcha")}
-          locale="fr-FR"
-          className="customClassName"
-          data-theme="grey"
-          style={{
-            display: "table",
-            margin: "0 auto",
-            paddingBottom: "30px",
-            marginTop: "30px"
-          }}
-        />
-        <Button
-          disabled={
-            !this.state.validCaptcha ||
-            this.props.formErrors ||
-            this.props.successReservation
-          }
-          outline
-          color="secondary"
-          onClick={() => {
-            return fetchCreateReservation({
-              loading: this.props.onLoading(true),
-              contact: this.props.selectedForm,
-              ...this.props.reservationData
-            }).then(data => {
-              localStorage.setItem(
-                "datas",
-                JSON.stringify(this.props.selectedForm)
-              )
-              this.props.success()
-            })
-          }}
-        >
-          Valider
-        </Button>{" "}
-        <div
-          style={{
-            marginTop: "30px"
-          }}
-        >
-          {this.props.buttonRefresh && <ButtonRefresh />}
-        </div>
-        {this.props.showAlert && (
-          <Alert
+          <Button
+            disabled={
+              !this.state.validCaptcha ||
+              this.props.formErrors ||
+              this.props.successReservation
+            }
+            outline
+            color="secondary"
+            onClick={() => {
+              return fetchCreateReservation({
+                loading: this.props.onLoading(true),
+                contact: this.props.selectedForm,
+                ...this.props.reservationData
+              }).then(data => {
+                localStorage.setItem(
+                  "datas",
+                  JSON.stringify(this.props.selectedForm)
+                )
+                this.props.success()
+              })
+            }}
+          >
+            Valider
+          </Button>{" "}
+          <div
             style={{
               marginTop: "30px"
             }}
           >
-            {" "}
-            Vous avez reçu un mail de confirmation{" "}
-          </Alert>
-        )}
-      </form>
+            {this.props.buttonRefresh && <ButtonRefresh />}
+          </div>
+          {this.props.showAlert && (
+            <Alert
+              style={{
+                marginTop: "30px"
+              }}
+            >
+              {" "}
+              Vous avez reçu un mail de confirmation{" "}
+            </Alert>
+          )}
+        </form>
+      </Zoom>
     )
   }
 
