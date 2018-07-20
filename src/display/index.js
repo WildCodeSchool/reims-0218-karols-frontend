@@ -47,7 +47,7 @@ export const showDatePicker = state =>
 
 export const showCalendar = state => state.timeSlots.length >= 1
 
-export const showForm = state => getSelectedTimeSlot(state)
+export const showFormAndRecap = state => getSelectedTimeSlot(state)
 
 export const showCountPeopleTable = state =>
   state.services.filter(service => service.selected && service.id === 2)

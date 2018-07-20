@@ -23,7 +23,7 @@ class Info extends React.Component {
       <div>
         <Button
           style={{
-            width: "100px",
+            width: "142px",
             height: "30px",
             opacity: "0.8"
           }}
@@ -34,10 +34,11 @@ class Info extends React.Component {
             style={{
               position: "relative",
               transform: "translateY(-25%)",
-              fontStyle: "bold"
+              fontStyle: "bold",
+              fontSize: "20px"
             }}
           >
-            Description
+            En savoir plus
           </p>
           {this.props.buttonLabel}
         </Button>
