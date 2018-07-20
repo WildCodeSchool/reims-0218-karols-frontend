@@ -11,6 +11,10 @@ const transformDay = date =>
     .setLocale("fr")
     .toFormat("cccc")
 
+const capitalizeFirstLetter = string => {
+  return string.charAt(0).toUpperCase() + string.slice(1)
+}
+
 const CalendarDay = ({ date, selected }) => (
   <div
     style={{
@@ -29,7 +33,7 @@ const CalendarDay = ({ date, selected }) => (
         fontSize: "12px"
       }}
     >
-      {transformDay(date)}
+      {capitalizeFirstLetter(transformDay(date))}
       <br />
       {transformDate(date)}
     </p>
