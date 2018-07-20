@@ -7,6 +7,7 @@ import Media from "react-media"
 import { fetchDateSelected } from "../api/fetchDateSelected"
 
 import { scroller } from "react-scroll"
+import Zoom from "react-reveal/Zoom"
 import {
   makeTimeslotsReceived,
   makeChooseSlotReservation,
@@ -84,38 +85,40 @@ class TimeSlots extends Component {
   }
   render() {
     return (
-      <Container>
-        <Media query="(max-width: 575.98px)">
-          {matches =>
-            matches ? (
-              <ResultCalendar
-                handleMinusClick={this.handleMinusClick}
-                weekTimeSlots={this.props.timeSlots.slice(0, 3)}
-                handlePlusClick={this.handlePlusClick}
-                selectTimeSlot={this.props.onTimeSlotSelected}
-              />
-            ) : (
-              <ResultCalendar
-                handleMinusClick={this.handleMinusClick}
-                weekTimeSlots={this.props.timeSlots}
-                handlePlusClick={this.handlePlusClick}
-                selectTimeSlot={this.props.onTimeSlotSelected}
-              />
-            )
-          }
-        </Media>
+      <Zoom>
+        <Container>
+          <Media query="(max-width: 575.98px)">
+            {matches =>
+              matches ? (
+                <ResultCalendar
+                  handleMinusClick={this.handleMinusClick}
+                  weekTimeSlots={this.props.timeSlots.slice(0, 3)}
+                  handlePlusClick={this.handlePlusClick}
+                  selectTimeSlot={this.props.onTimeSlotSelected}
+                />
+              ) : (
+                <ResultCalendar
+                  handleMinusClick={this.handleMinusClick}
+                  weekTimeSlots={this.props.timeSlots}
+                  handlePlusClick={this.handlePlusClick}
+                  selectTimeSlot={this.props.onTimeSlotSelected}
+                />
+              )
+            }
+          </Media>
 
-        <div className="availabilities-more-button mt-3">
-          <div className="phone mt-3">
-            {this.props.selectedShop && (
-              <p className="shop">
-                Si vous ne trouvez aucun crénau, contactez le{" "}
-                {this.props.selectedShop.phone}
-              </p>
-            )}
+          <div className="availabilities-more-button mt-3">
+            <div className="phone mt-3">
+              {this.props.selectedShop && (
+                <p className="shop">
+                  Si vous ne trouvez aucun crénau, contactez le{" "}
+                  {this.props.selectedShop.phone}
+                </p>
+              )}
+            </div>
           </div>
-        </div>
-      </Container>
+        </Container>
+      </Zoom>
     )
   }
 }
