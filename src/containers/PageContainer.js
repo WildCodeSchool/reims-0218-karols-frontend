@@ -78,7 +78,9 @@ class Page extends Component {
           {this.props.showMalePrestation && <PrestationMaleContainer />}
         </Element>
         {this.props.showDatePicker && <DatePickerContainer />}
-        {this.props.showCalendar && <CalendarContainer />}
+        <Element name="calendar">
+          {this.props.showCalendar && <CalendarContainer />}
+        </Element>
         <Element name="form">
           {this.props.showFormAndRecap && (
             <div>

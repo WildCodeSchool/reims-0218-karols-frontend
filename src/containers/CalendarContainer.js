@@ -6,7 +6,7 @@ import Media from "react-media"
 
 import { fetchDateSelected } from "../api/fetchDateSelected"
 
-import { Button } from "reactstrap"
+import { scroller } from "react-scroll"
 import {
   makeTimeslotsReceived,
   makeChooseSlotReservation,
@@ -32,6 +32,13 @@ const mapDispatchToProps = dispatch => ({
 })
 
 class TimeSlots extends Component {
+  componentDidMount() {
+    scroller.scrollTo("calendar", {
+      duration: 1500,
+      delay: 100,
+      smooth: true
+    })
+  }
   constructor(props) {
     super(props)
     this.state = {
