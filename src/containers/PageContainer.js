@@ -10,7 +10,7 @@ import {
   showMalePrestation,
   showDatePicker,
   showCalendar,
-  showForm,
+  showFormAndRecap,
   showCountPeopleTable
 } from "../display"
 
@@ -37,7 +37,7 @@ const mapStateToProps = state => ({
   showFemalePrestation: showFemalePrestation(state),
   showMalePrestation: showMalePrestation(state),
   showDatePicker: showDatePicker(state),
-  showForm: showForm(state),
+  showFormAndRecap: showFormAndRecap(state),
   showCalendar: showCalendar(state),
   showCountPeopleTable: showCountPeopleTable(state)
 })
@@ -77,12 +77,16 @@ class Page extends Component {
         <Element name="male">
           {this.props.showMalePrestation && <PrestationMaleContainer />}
         </Element>
-
         {this.props.showDatePicker && <DatePickerContainer />}
         {this.props.showCalendar && <CalendarContainer />}
-        <ResumeContainer />
         <Element name="form">
-          {this.props.showForm && <ContactFormContainer />}
+          {this.props.showFormAndRecap && (
+            <div>
+              {" "}
+              <ResumeContainer />
+              <ContactFormContainer />{" "}
+            </div>
+          )}
         </Element>
       </Container>
     )
