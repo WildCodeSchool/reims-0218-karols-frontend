@@ -50,7 +50,7 @@ class ShowResume extends Component {
 
           {reservationData.shop && (
             <p className="shop">
-              Vous avez reservé à {reservationData.shop.city}
+              Vous avez reservé à KAROLS {reservationData.shop.city}
             </p>
           )}
           {(reservationData.service && reservationData.service.id) === 1 && (
@@ -106,16 +106,24 @@ class ShowResume extends Component {
                   {reservationData.countGender.map((gender, index) => (
                     <div key={index}>
                       {gender.sex === "M" && (
-                        <p>
-                          Vous êtes {gender.count} homme{gender.count > 1 &&
-                            "s"}
-                        </p>
+                        <div>
+                          {gender.count >= 1 && (
+                            <p>
+                              Vous êtes {gender.count} homme{gender.count > 1 &&
+                                "s"}
+                            </p>
+                          )}
+                        </div>
                       )}
                       {gender.sex === "F" && (
-                        <p>
-                          Vous êtes {gender.count} femme{gender.count > 1 &&
-                            "s"}
-                        </p>
+                        <div>
+                          {gender.count >= 1 && (
+                            <p>
+                              Vous êtes {gender.count} femme{gender.count > 1 &&
+                                "s"}
+                            </p>
+                          )}
+                        </div>
                       )}
                     </div>
                   ))}
