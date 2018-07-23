@@ -60,7 +60,23 @@ const CardModelGender = ({
                 className="title"
                 style={{
                   fontWeight: "500",
-                  marginTop: "10px"
+                  fontSize: "28px",
+                  marginBottom: "120px",
+                  backgroundColor: "rgba(255, 255, 255, 0.2)",
+                  borderRadius: "10px",
+                  width: "auto",
+                  minWidth: "auto",
+                  maxWidth: "auto",
+
+                  background: selected
+                    ? `linear-gradient(
+                      rgba(0, 0, 0, 0.5), 
+                      rgba(0, 0, 0, 0.5)
+                      ),  center/100% no-repeat`
+                    : `linear-gradient(
+                      rgba(255, 255, 255, 0.1), 
+                     rgba(255, 255, 255, 0.1)
+                     ),  center/100% no-repeat`
                 }}
               >
                 <p
@@ -72,7 +88,24 @@ const CardModelGender = ({
                 </p>
               </CardTitle>
             </CardBody>
-            <CardFooter>
+            <CardFooter
+              style={{
+                backgroundColor: `rgba(136,136,136, ${showCounter ? 0.4 : 0})`,
+                maxHeight: "140px",
+                minHeight: "100px"
+              }}
+            >
+              <p
+                className="text"
+                style={{
+                  color: "#fff",
+                  fontSize: "20px",
+                  WebkitTransform: "translateY(calc(0px + 1em))",
+                  transform: "translateY(calc(0px + 1em))"
+                }}
+              >
+                {" "}
+              </p>
               {showCounter && (
                 <Counter
                   count={count}
