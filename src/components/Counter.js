@@ -10,7 +10,12 @@ const Counter = ({
   preparationId
 }) => {
   return (
-    <div>
+    <div
+      style={{
+        maxHeight: "36px",
+        marginBottom: "10px"
+      }}
+    >
       <Button
         onClick={() => handleMinus(id, preparationId)}
         size="large"
