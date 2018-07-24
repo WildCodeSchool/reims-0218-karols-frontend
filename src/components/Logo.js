@@ -8,7 +8,7 @@ const Logo = ({ logo }) => {
         matches ? (
           <img src={logo} className="img-fluid" alt="logo" />
         ) : (
-          <img src={logo} className="w-25 p-3" alt="logo" />
+          <img src={logo} className="w-75 p-3" alt="logo" />
         )
       }
     </Media>
